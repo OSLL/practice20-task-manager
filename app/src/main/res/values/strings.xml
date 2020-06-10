@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Settings</string>
     !-- Settings Activity Title -->
     <string name="title_activity_settings">Settings</string>
 
@@ -17,4 +16,7 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="app_name">Motion Task</string>
+
 </resources>
