@@ -42,7 +42,7 @@ class EditActivity : AppCompatActivity() {
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
-        inflater.inflate(R.menu.editmenu, menu)
+        inflater.inflate(R.menu.editmenuupper, menu)
         return true
     }
 
