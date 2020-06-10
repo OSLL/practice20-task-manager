@@ -10,10 +10,14 @@ import android.view.Menu
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
+import com.google.android.material.bottomnavigation.LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED
 
 import kotlinx.android.synthetic.main.activity_edit.*
-
 class EditActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val actionBar = supportActionBar
@@ -36,6 +40,12 @@ class EditActivity : AppCompatActivity() {
            // }
   //      })
     }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.editmenu, menu)
+        return true
+    }
+
     override fun onSupportNavigateUp():Boolean {
         finish()
         return true
