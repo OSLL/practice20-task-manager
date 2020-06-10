@@ -14,4 +14,12 @@
         <item name="android:actionBarStyle">@style/MyActionBar</item>
         <item name="android:textColor">@color/textColorPrimary</item>
     </style>
+
+    <style name="BottomMenu" parent="Theme.MaterialComponents">
+        <!-- Customize your theme here. -->
+
+        <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomAppBar</item>
+        <item name="colorPrimary">#6BBAFF</item>
+    </style>
+
 </resources>
