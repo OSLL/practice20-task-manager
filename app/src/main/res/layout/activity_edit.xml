@@ -14,11 +14,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
             <com.google.android.material.bottomappbar.BottomAppBar
                 app:labelVisibilityMode="unlabeled"
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/editmenu"
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:menu="@menu/editmenu"
                 tools:ignore="BottomAppBar"
                 />
 
