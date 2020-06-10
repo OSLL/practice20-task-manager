@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SetColor"
+        android:enabled="true"
+        android:src="@drawable/bookmark_icon"
+        android:title="Set color"
+        android:background="?attr/selectableItemBackgroundBorderless">
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/SetAlarm"
+        android:enabled="true"
+        android:src="@drawable/newalarm_icon"
+        android:title="Set alarm"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/SetList"
+        android:enabled="true"
+        android:src="@drawable/listadd_icon"
+        android:title="Create list"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/SetAttachment"
+        android:enabled="true"
+        android:src="@drawable/addattachment_icon"
+        android:title="Add attachment"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/Pin"
+        android:enabled="true"
+        android:src="@drawable/pin_icon"
+        android:title="Pin task"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
+    </LinearLayout>
+</FrameLayout>
+

@@ -1,5 +1,6 @@
 package com.makentoshe.androidgithubcitemplate
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
@@ -10,6 +11,7 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val actionBar = supportActionBar
         actionBar?.title = "Profile"
+        actionBar?.setBackgroundDrawable(ColorDrawable(0xff6bbaff.toInt()))
         actionBar?.setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_settings)
         supportFragmentManager

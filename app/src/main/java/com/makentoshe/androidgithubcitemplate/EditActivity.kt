@@ -1,18 +1,23 @@
 package com.makentoshe.androidgithubcitemplate
 
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.edit_menu_lower.*
 
 class EditActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val actionBar = supportActionBar
+        actionBar?.title = "Edit"
         actionBar?.setBackgroundDrawable(ColorDrawable(0xff6bbaff.toInt()))
         actionBar?.setDisplayHomeAsUpEnabled(true)
         setContentView(R.layout.activity_edit)
+
         // titlenote.addTextChangedListener(object: TextWatcher{
         //override fun afterTextChanged(s: Editable) {
         //    if (s.filter {char-> char.isDigit()}.isNotEmpty()) {
