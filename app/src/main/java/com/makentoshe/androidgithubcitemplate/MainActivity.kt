@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         bigblackbtn.setOnClickListener {
             intent = Intent(this, EditActivity::class.java)
+            //intent.setFlags(FAB_ALIGNMENT_MODE_END)
             startActivity(intent)
             //Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
         }
