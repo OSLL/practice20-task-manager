@@ -2,6 +2,8 @@ package com.makentoshe.androidgithubcitemplate
 
 import android.app.ActionBar
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -21,7 +23,7 @@ class EditActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val actionBar = supportActionBar
-        actionBar?.title = "Edit"
+        actionBar?.setBackgroundDrawable(ColorDrawable(0xff6bbaff.toInt()))
         actionBar?.setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_edit)
             // titlenote.addTextChangedListener(object: TextWatcher{

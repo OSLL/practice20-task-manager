@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimary">#FAFAFA</color>
    <!--<color name="colorPrimaryDark">#91E4FB</color>-->
     <color name="colorAccent">#91E4FB</color>
-    <color name="bgColorLight">#FFFFFF</color>
-    <color name="colorIcons">#91E4FB</color>
-        <color name="colorSelected">#9ed2ff</color>
+    <color name="bgColorLight">#EEEEEE</color>
+    <color name="colorIcons">#6bbaff<!--#9ed2ff#91E4FB--></color>
+    <color name="colorSelected">#9ed2ff</color>
+    <color name="actionbar_background">#6BBAFF</color>
+    <color name="actionbar_text_color">#ffffff</color>
 </resources>
