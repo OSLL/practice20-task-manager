@@ -1,11 +1,9 @@
 package com.makentoshe.androidgithubcitemplate
 
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -14,12 +12,12 @@ class SettingsActivity : AppCompatActivity() {
         val actionBar = supportActionBar
         actionBar?.title = "Profile"
         actionBar?.setBackgroundDrawable(ColorDrawable(0xff6bbaff.toInt()))
-        actionBar?.setDisplayHomeAsUpEnabled(true);
+        actionBar?.setDisplayHomeAsUpEnabled(true)
         setContentView(R.layout.activity_settings)
         supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.settings, SettingsFragment())
-                .commit()
+            .beginTransaction()
+            .replace(R.id.settings, SettingsFragment())
+            .commit()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
@@ -30,7 +28,8 @@ class SettingsActivity : AppCompatActivity() {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
         }
     }
-    override fun onSupportNavigateUp():Boolean {
+
+    override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
     }

@@ -4,15 +4,15 @@
         android:id="@+id/HomeButton"
         android:enabled="true"
         android:icon="@drawable/home_icon"
-        android:title="Home"/>
+        android:title="Home" />
     <item
         android:id="@+id/StatsButton"
         android:enabled="true"
         android:icon="@drawable/stats_icon"
-        android:title="Stats"/>
+        android:title="Stats" />
     <item
         android:id="@+id/ProfileButton"
         android:enabled="true"
         android:icon="@drawable/profile_icon_square"
-        android:title="Profile"/>
+        android:title="Profile" />
 </menu>
