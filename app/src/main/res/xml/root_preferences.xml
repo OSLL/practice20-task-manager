@@ -4,8 +4,8 @@
 
         <Preference
             app:icon="@drawable/archive_icon"
-            app:summary="Archived tasks and notes"
             app:title="Archive"/>
+
 
     </PreferenceCategory>
 
@@ -13,7 +13,6 @@
 
         <Preference
             app:icon="@drawable/settings_icon"
-            app:summary="Change preferences"
             app:title="Settings"/>
 
     </PreferenceCategory>
@@ -34,7 +33,6 @@
 
         <Preference
             app:icon="@drawable/help_icon"
-            app:summary="FAQ about app"
             app:title="Help"/>
 
     </PreferenceCategory>
