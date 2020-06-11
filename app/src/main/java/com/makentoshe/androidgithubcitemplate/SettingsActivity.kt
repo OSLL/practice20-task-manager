@@ -1,9 +1,11 @@
 package com.makentoshe.androidgithubcitemplate
 
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -19,6 +21,8 @@ class SettingsActivity : AppCompatActivity() {
                 .replace(R.id.settings, SettingsFragment())
                 .commit()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {

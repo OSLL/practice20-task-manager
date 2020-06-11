@@ -15,15 +15,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_main)
-        bigblackbtn.setOnClickListener {
+        floating_action_button.setOnClickListener {
             intent = Intent(this, EditActivity::class.java)
             //intent.setFlags(FAB_ALIGNMENT_MODE_END)
-            startActivity(intent)
-            //Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
-        }
-
-        settings.setOnClickListener {
-            intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
             //Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
         }
