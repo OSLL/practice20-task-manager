@@ -1,42 +1,43 @@
 package com.makentoshe.androidgithubcitemplate
 
 import android.content.Intent
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import android.widget.Toast
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import android.os.Bundle
-import android.view.View
-import kotlinx.android.synthetic.main.fragment_common.*
 
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.HomeButton -> {
-                    //goto up
-                    true
+        val mOnNavigationItemSelectedListener =
+            BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.HomeButton -> {
+                        //goto up
+                        true
+                    }
+                    R.id.StatsButton -> {
+                        intent = Intent(this, StatsActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                        overridePendingTransition(0, 0)
+                        true
+                    }
+                    R.id.ProfileButton -> {
+                        intent = Intent(this, SettingsActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                        overridePendingTransition(0, 0)
+                        true
+                    }
                 }
-                R.id.StatsButton -> {
-                    intent = Intent(this, StatsActivity::class.java)
-                    finish()
-                    startActivity(intent)
-                    true
-                }
-                R.id.ProfileButton -> {
-                    intent = Intent(this, SettingsActivity::class.java)
-                    finish()
-                    startActivity(intent)
-                    true
-                }
+                false
             }
-            false
+         fun onActivityResult(requestCode:Int, resultCode:Int, data:Intent) {
+            super.onActivityResult(requestCode, resultCode, data)
+            finish()
         }
 
         supportActionBar?.hide()

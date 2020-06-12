@@ -22,27 +22,31 @@ class SettingsActivity : AppCompatActivity() {
             .replace(R.id.settings, SettingsFragment())
             .commit()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.HomeButton -> {
-                    intent = Intent(this, MainActivity::class.java)
-                    finish()
-                    startActivity(intent)
-                    true
+        val mOnNavigationItemSelectedListener =
+            BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.HomeButton -> {
+                        intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        overridePendingTransition(0, 0)
+                        finish()
+                        true
+                    }
+                    R.id.StatsButton -> {
+                        intent = Intent(this, StatsActivity::class.java)
+                        startActivity(intent)
+                        overridePendingTransition(0, 0)
+                        finish()
+
+                        true
+                    }
+                    R.id.ProfileButton -> {
+                        //goto up
+                        true
+                    }
                 }
-                R.id.StatsButton -> {
-                    intent = Intent(this, StatsActivity::class.java)
-                    finish()
-                    startActivity(intent)
-                    true
-                }
-                R.id.ProfileButton -> {
-                    //goto up
-                    true
-                }
+                false
             }
-            false
-        }
 
         setContentView(R.layout.activity_settings)
         bottom_navigation.selectedItemId = R.id.ProfileButton
@@ -58,7 +62,16 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
+        intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(0, 0)
         finish()
         return true
+    }
+    override fun onBackPressed() {
+        intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(0, 0)
+        finish()
     }
 }

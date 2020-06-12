@@ -30,7 +30,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -71,13 +76,13 @@
                     app:layout_constraintTop_toBottomOf="@id/editTitle" />
             </LinearLayout>
         </ScrollView>
-
+        </LinearLayout>
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:backgroundTint="@color/buttonBackground"
-            app:fabAlignmentMode="end"
+            android:gravity="end"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <include
@@ -85,13 +90,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/bottom_navigation"></include>
-
+        </com.google.android.material.bottomappbar.BottomAppBar>
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                app:fabSize="normal"
                 android:id="@+id/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:backgroundTint="@color/colorPrimary"
                 android:src="@drawable/plus_icon" />
-        </com.google.android.material.bottomappbar.BottomAppBar>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
