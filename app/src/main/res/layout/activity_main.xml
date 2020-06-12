@@ -10,16 +10,6 @@
     app:menu="@menu/bottom_navigation_menu"
     tools:context=".MainActivity">
 
-    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="start"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="10dp"
-        android:backgroundTint="@color/windowBackground"
-        card_view:cardCornerRadius="4dp"
-        card_view:layout_constraintTop_toTopOf="parent">
 
 
     </androidx.cardview.widget.CardView>
