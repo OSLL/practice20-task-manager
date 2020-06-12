@@ -1,14 +1,9 @@
 package com.makentoshe.androidgithubcitemplate
 
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_edit.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.edit_menu_lower.*
 
 class EditActivity : AppCompatActivity() {
 
