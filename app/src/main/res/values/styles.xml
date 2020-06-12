@@ -1,5 +1,7 @@
 <resources>
-
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/colorAccent</item>
+    </style>
     <style name="AppTheme" parent="Theme.MaterialComponents">
         <item name="colorAccent">@color/colorAccent</item>
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>

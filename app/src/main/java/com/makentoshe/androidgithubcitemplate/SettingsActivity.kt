@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.bottom_navigation
+import kotlinx.android.synthetic.main.activity_stats.*
 
 class SettingsActivity : AppCompatActivity() {
 
