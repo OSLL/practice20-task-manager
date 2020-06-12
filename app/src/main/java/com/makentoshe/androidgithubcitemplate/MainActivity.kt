@@ -27,5 +27,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             //Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
         }
+
+        stats.setOnClickListener {
+            intent = Intent(this, StatsActivity::class.java)
+            startActivity(intent)
+            //Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
+        }
     }
 }

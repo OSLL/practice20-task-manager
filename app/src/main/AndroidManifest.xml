@@ -11,6 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".EditActivity"/>
         <activity android:name=".SettingsActivity"/>
+        <activity android:name=".StatsActivity"
+            android:theme="@style/Stats"/>
 
         <activity android:name=".MainActivity">
             <intent-filter>
