@@ -4,8 +4,8 @@
 
         <Preference
             app:icon="@drawable/archive_icon"
-            app:summary="Archived tasks and notes"
-            app:title="Archive"/>
+            app:title="Archive" />
+
 
     </PreferenceCategory>
 
@@ -13,20 +13,21 @@
 
         <Preference
             app:icon="@drawable/settings_icon"
-            app:summary="Change preferences"
-            app:title="Settings"/>
+            app:title="Settings" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="Appearance" app:icon="@drawable/apppearance_icon">
+    <PreferenceCategory
+        app:icon="@drawable/apppearance_icon"
+        app:title="Appearance">
 
         <SwitchPreferenceCompat
             app:key="sync"
             app:title="Dark mode" />
 
         <SwitchPreferenceCompat
-        app:key="sync"
-        app:title="Invert swipe" />
+            app:key="sync"
+            app:title="Invert swipe" />
 
     </PreferenceCategory>
 
@@ -34,8 +35,7 @@
 
         <Preference
             app:icon="@drawable/help_icon"
-            app:summary="FAQ about app"
-            app:title="Help"/>
+            app:title="Help" />
 
     </PreferenceCategory>
 

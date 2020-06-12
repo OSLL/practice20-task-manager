@@ -1,28 +1,36 @@
 package com.makentoshe.androidgithubcitemplate
 
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayout
+import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.preference.PreferenceFragmentCompat
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_main.*
+import android.view.Menu
+import android.view.MenuItem
+import com.makentoshe.androidgithubcitemplate.stats.SectionsPagerAdapter
+import android.widget.Toast;
+import android.widget.Toolbar
+import java.lang.Override as Override1
 
-class SettingsActivity : AppCompatActivity() {
+class StatsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val actionBar = supportActionBar
-        actionBar?.title = "Profile"
+                actionBar?.title = "Statistics"
         actionBar?.setBackgroundDrawable(ColorDrawable(0xff6bbaff.toInt()))
         actionBar?.setDisplayHomeAsUpEnabled(true)
+        setContentView(R.layout.activity_stats)
+        title = null;
 
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.settings, SettingsFragment())
-            .commit()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val mOnNavigationItemSelectedListener =
+        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
+        val viewPager: ViewPager = findViewById(R.id.view_pager)
+        viewPager.adapter = sectionsPagerAdapter
+        val tabs: TabLayout = findViewById(R.id.tabs)
+        tabs.setupWithViewPager(viewPager)
+      val mOnNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.HomeButton -> {
@@ -33,34 +41,25 @@ class SettingsActivity : AppCompatActivity() {
                         true
                     }
                     R.id.StatsButton -> {
-                        intent = Intent(this, StatsActivity::class.java)
-                        startActivity(intent)
-                        overridePendingTransition(0, 0)
-                        finish()
-
+                        //goto up
                         true
                     }
                     R.id.ProfileButton -> {
-                        //goto up
+                        intent = Intent(this, SettingsActivity::class.java)
+                        startActivity(intent)
+                        overridePendingTransition(0, 0)
+                        finish()
                         true
                     }
                 }
                 false
             }
-
-        setContentView(R.layout.activity_settings)
-        bottom_navigation.selectedItemId = R.id.ProfileButton
+        setContentView(R.layout.activity_stats)
+        bottom_navigation.selectedItemId = R.id.StatsButton
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
 
     }
-
-    class SettingsFragment : PreferenceFragmentCompat() {
-        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-            setPreferencesFromResource(R.xml.root_preferences, rootKey)
-        }
-    }
-
     override fun onSupportNavigateUp(): Boolean {
         intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
@@ -73,5 +72,6 @@ class SettingsActivity : AppCompatActivity() {
         startActivity(intent)
         overridePendingTransition(0, 0)
         finish()
+
     }
 }
