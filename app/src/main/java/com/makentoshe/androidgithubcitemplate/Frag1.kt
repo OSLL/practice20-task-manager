@@ -56,4 +56,4 @@ class Frag1 : Fragment() {
                 }
             }
     }
-}
+} 
