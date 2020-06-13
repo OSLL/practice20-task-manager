@@ -36,72 +36,76 @@
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
             app:layout_constraintTop_toTopOf="parent"
             android:orientation="vertical">
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <LinearLayout
+            <EditText
+                android:id="@+id/editTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:backgroundTint="@color/buttonBackground"
+                android:hint="Title"
+                android:maxLength="32"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="#000000"
+                android:textColorHint="@color/textColorSecondary"
+                app:layout_constraintBottom_toTopOf="@id/textField" />
 
-                <EditText
-                    android:id="@+id/editTitle"
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/buttonBackground"
-                    android:hint="Title"
-                    android:maxLength="32"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:textColor="#000000"
-                    android:textColorHint="@color/textColorSecondary"
-                    app:layout_constraintBottom_toTopOf="@id/textField" />
+                    android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/textField"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Begin your note..."
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:inputType="textMultiLine"
-                    android:scrollbars="vertical"
-                    android:textColor="@color/textColor"
-                    android:textColorHint="@color/textColorSecondary"
-                    app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-                    app:layout_constraintTop_toBottomOf="@id/editTitle" />
-            </LinearLayout>
-        </ScrollView>
-        </LinearLayout>
 
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:backgroundTint="@color/buttonBackground"
-            android:gravity="end"
-            app:layout_constraintBottom_toBottomOf="parent">
 
-            <include
-                layout="@layout/edit_menu_lower"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/bottom_navigation"></include>
-        </com.google.android.material.bottomappbar.BottomAppBar>
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                app:fabSize="normal"
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@id/bottom_navigation"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_margin="20dp"
-                app:fabCustomSize="65dp"
-                android:backgroundTint="@color/colorPrimary"
-                android:src="@drawable/plus_icon"
-                />
+                    <EditText
+                        android:id="@+id/textField"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Begin your note"
+                        android:inputType="textMultiLine"
+                        android:scrollbars="vertical"
+                        android:textColor="@color/textColor"
+                        android:textColorHint="@color/textColorSecondary"
+                        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+                        app:layout_constraintTop_toBottomOf="@id/editTitle" />
+                </LinearLayout>
+            </ScrollView>
+
+</LinearLayout>
+
+<com.google.android.material.bottomappbar.BottomAppBar
+android:id="@+id/bottom_navigation"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+app:backgroundTint="@color/buttonBackground"
+android:gravity="end"
+app:layout_constraintBottom_toBottomOf="parent">
+
+<include
+    layout="@layout/edit_menu_lower"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toEndOf="@id/bottom_navigation"></include>
+</com.google.android.material.bottomappbar.BottomAppBar>
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+app:fabSize="normal"
+android:id="@+id/fab"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+app:layout_constraintBottom_toBottomOf="@id/bottom_navigation"
+app:layout_constraintRight_toRightOf="parent"
+android:layout_margin="20dp"
+app:fabCustomSize="65dp"
+android:backgroundTint="@color/colorPrimary"
+android:src="@drawable/plus_icon"
+    />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
