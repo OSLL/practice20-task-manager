@@ -37,46 +37,44 @@
             app:layout_constraintTop_toTopOf="parent"
             android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <EditText
+                android:id="@+id/editTitle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toTopOf="@id/bottom_navigation" />
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/buttonBackground"
+                android:hint="Title"
+                android:maxLength="32"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="#000000"
+                android:textColorHint="@color/textColorSecondary"
+                app:layout_constraintBottom_toTopOf="@id/textField" />
+
 
             <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/editTitle"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/buttonBackground"
-                    android:hint="Title"
-                    android:maxLength="32"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:textColor="#000000"
-                    android:textColorHint="@color/textColorSecondary"
-                    app:layout_constraintBottom_toTopOf="@id/textField" />
+                    android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/textField"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Begin your note"
-                    android:inputType="textMultiLine"
-                    android:scrollbars="vertical"
-                    android:textColor="@color/textColor"
-                    android:textColorHint="@color/textColorSecondary"
-                    app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-                    app:layout_constraintTop_toBottomOf="@id/editTitle" />
-            </LinearLayout>
-        </ScrollView>
+
+
+                    <EditText
+                        android:id="@+id/textField"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Begin your note"
+                        android:inputType="textMultiLine"
+                        android:scrollbars="vertical"
+                        android:textColor="@color/textColor"
+                        android:textColorHint="@color/textColorSecondary"
+                        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+                        app:layout_constraintTop_toBottomOf="@id/editTitle" />
+                </LinearLayout>
+            </ScrollView>
         </LinearLayout>
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_navigation"
@@ -92,14 +90,6 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/bottom_navigation"></include>
         </com.google.android.material.bottomappbar.BottomAppBar>
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                app:fabSize="normal"
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:backgroundTint="@color/colorPrimary"
-                android:src="@drawable/plus_icon" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
