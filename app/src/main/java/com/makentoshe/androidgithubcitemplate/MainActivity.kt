@@ -2,6 +2,7 @@ package com.makentoshe.androidgithubcitemplate
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -55,5 +56,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun EditNote(view: View){
+        val editIntent = Intent(this, EditActivity::class.java)
+        startActivity(editIntent)
 
+    }
 }
