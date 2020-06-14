@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
+
         supportActionBar?.hide()
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         floating_action_button.setOnClickListener {
