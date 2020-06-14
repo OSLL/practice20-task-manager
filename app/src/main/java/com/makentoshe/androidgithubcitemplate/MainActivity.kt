@@ -1,7 +1,9 @@
 package com.makentoshe.androidgithubcitemplate
 
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -19,14 +21,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         var piechart: PieChart = findViewById<PieChart>(R.id.rating_chart)
         var pievalues: ArrayList<PieEntry> = ArrayList(0)
-            pievalues.add(0, PieEntry(66f,""))
-            pievalues.add(1,PieEntry(34f,""))
+            pievalues.add(0, PieEntry(34f,""))
+            pievalues.add(1,PieEntry(66f,""))
         var piedataset = PieDataSet(pievalues,"")
-        var colorclassarray = listOf<Int>(Color.BLUE, Color.WHITE)
+        piedataset.setDrawValues(false)
+        var colorclassarray = listOf<Int>(Color.TRANSPARENT, 0xff6bbaff.toInt())
         piedataset.colors = colorclassarray
         var piedata = PieData(piedataset)
         if (piechart != null) {
-            piechart.animateY(5000)
+            piechart.legend.isEnabled = false
+            piechart.description.isEnabled = false
+            piechart.setDrawCenterText(true)
+            piechart.holeRadius = 70f
+            //piechart.transparentCircleRadius = 75f
+            piechart.setTransparentCircleColor(0xff666666.toInt())
+            piechart.setCenterTextSize(50F)
+            piechart.centerText = "66";
+            piechart.animateY( 1500)
             piechart.data = piedata
             piechart.invalidate()
         }

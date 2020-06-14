@@ -55,13 +55,17 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="10dp"
                 android:backgroundTint="@color/windowBackground"
-                app:cardCornerRadius="4dp">
+                app:cardCornerRadius="10dp">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <com.github.mikephil.charting.charts.PieChart
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="135dp"
+                        android:layout_height="135dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_margin="10dp"
                         android:id="@+id/rating_chart"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -160,7 +164,7 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginVertical="10dp"
             android:backgroundTint="@color/windowBackground"
-            card_view:cardCornerRadius="4dp">
+            card_view:cardCornerRadius="10dp">
 
             <ProgressBar
                 android:layout_width="100dp"
@@ -177,7 +181,7 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="10dp"
                 android:backgroundTint="@color/windowBackground"
-                app:cardCornerRadius="4dp">
+                app:cardCornerRadius="10dp">
 
                 <ProgressBar
                     android:layout_width="100dp"
@@ -195,7 +199,7 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="10dp"
                 android:backgroundTint="@color/windowBackground"
-                card_view:cardCornerRadius="4dp">
+                card_view:cardCornerRadius="10dp">
 
                 <ProgressBar
                     android:layout_width="100dp"
@@ -211,7 +215,7 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="10dp"
                 android:backgroundTint="@color/windowBackground"
-                app:cardCornerRadius="4dp">
+                app:cardCornerRadius="10dp">
 
                 <ProgressBar
                     android:layout_width="100dp"
@@ -227,7 +231,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginVertical="10dp"
                     android:backgroundTint="@color/windowBackground"
-                    app:cardCornerRadius="4dp">
+                    app:cardCornerRadius="10dp">
 
                     <ProgressBar
                         android:layout_width="100dp"
@@ -243,7 +247,7 @@
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginVertical="10dp"
                         android:backgroundTint="@color/windowBackground"
-                        app:cardCornerRadius="4dp">
+                        app:cardCornerRadius="10dp">
 
                         <ProgressBar
                             android:layout_width="100dp"
@@ -261,7 +265,7 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="10dp"
                 android:backgroundTint="@color/windowBackground"
-                card_view:cardCornerRadius="4dp">
+                card_view:cardCornerRadius="10dp">
 
                 <ProgressBar
                     android:layout_width="100dp"
