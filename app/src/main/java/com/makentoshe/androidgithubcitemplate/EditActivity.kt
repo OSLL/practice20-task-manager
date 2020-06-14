@@ -47,14 +47,14 @@ class EditActivity : AppCompatActivity() {
         return true
     }
 
-    fun acceptTheNote(view: View){
+   /* fun acceptTheNote(view: View){
         val acceptIntent = Intent(this, MainActivity::class.java)
         val titleString = editTitle.text.toString()
         val noteString = textField.text.toString()
         acceptIntent.putExtra(MainActivity.acceptedTitle, titleString)
         acceptIntent.putExtra(MainActivity.acceptedNote, noteString)
         startActivity(acceptIntent)
-    }
+    } */
 
 }
 

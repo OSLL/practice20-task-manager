@@ -82,10 +82,10 @@ class MainActivity : AppCompatActivity() {
             bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         }
 
-        acceptedNote()
+        //acceptedNote()
     }
 
-    fun EditNote(view: View){
+   /* fun EditNote(view: View){
         val editIntent = Intent(this, EditActivity::class.java)
         startActivity(editIntent)
 
@@ -100,13 +100,12 @@ class MainActivity : AppCompatActivity() {
     fun acceptedNote(){
         val acceptedTitle = intent.getStringExtra(acceptedTitle)
         val acceptedNote = intent.getStringExtra(acceptedNote)
-        textView2.text = acceptedTitle
+        textView2.text = acceptedTitle //когда у нас будет много заметок, так обращаться уже не выйдет, нужно будет что-то еще придумать
         textView3.text = acceptedNote
-    }
+    }*/ //Я (Ильдар) пока закомментировал, чтоби прикинуть еще что-нибудь по разметке
+
 
 }
 
-private operator fun PieData.invoke(piedata: PieData) {
 
-}
 
