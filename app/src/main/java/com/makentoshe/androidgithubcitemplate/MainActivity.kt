@@ -14,10 +14,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var piechart: PieChart
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        piechart = findViewById<PieChart>(R.id.rating_chart)
+        setContentView(R.layout.activity_main)
+        var piechart: PieChart = findViewById<PieChart>(R.id.rating_chart)
         var pievalues: ArrayList<PieEntry> = ArrayList(0)
             pievalues.add(0, PieEntry(66f,""))
             pievalues.add(1,PieEntry(34f,""))
@@ -25,8 +25,11 @@ class MainActivity : AppCompatActivity() {
         var colorclassarray = listOf<Int>(Color.BLUE, Color.WHITE)
         piedataset.colors = colorclassarray
         var piedata = PieData(piedataset)
-        piechart.setData(piedata)
-        piechart.invalidate()
+        if (piechart != null) {
+            piechart.animateY(5000)
+            piechart.data = piedata
+            piechart.invalidate()
+        }
         val mOnNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
@@ -57,7 +60,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         supportActionBar?.hide()
-        setContentView(R.layout.activity_main)
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         floating_action_button.setOnClickListener {
             intent = Intent(this, EditActivity::class.java)

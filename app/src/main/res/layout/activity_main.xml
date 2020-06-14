@@ -52,6 +52,22 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="10dp"
+                android:backgroundTint="@color/windowBackground"
+                app:cardCornerRadius="4dp">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:id="@+id/rating_chart"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="10dp"
