@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         }
 
-
+        acceptedNote()
     }
 
     fun EditNote(view: View){
@@ -61,4 +61,18 @@ class MainActivity : AppCompatActivity() {
         startActivity(editIntent)
 
     }
+
+
+    companion object {
+        const val acceptedTitle = "acceptedTitle"
+        const val acceptedNote = "acceptedNote"
+    }
+
+    fun acceptedNote(){
+        val acceptedTitle = intent.getStringExtra(acceptedTitle)
+        val acceptedNote = intent.getStringExtra(acceptedNote)
+        textView2.text = acceptedTitle
+        textView3.text = acceptedNote
+    }
+
 }

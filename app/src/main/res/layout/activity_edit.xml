@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/windowBackground"
@@ -52,8 +53,8 @@
 
 
             <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -75,37 +76,39 @@
                         app:layout_constraintTop_toBottomOf="@id/editTitle" />
                 </LinearLayout>
             </ScrollView>
+        </LinearLayout>
 
-</LinearLayout>
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            app:backgroundTint="@color/buttonBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="16dp">
 
-<com.google.android.material.bottomappbar.BottomAppBar
-android:id="@+id/bottom_navigation"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-app:backgroundTint="@color/buttonBackground"
-android:gravity="end"
-app:layout_constraintBottom_toBottomOf="parent">
+            <include
+                layout="@layout/edit_menu_lower"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/bottom_navigation">
 
-<include
-    layout="@layout/edit_menu_lower"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_toEndOf="@id/bottom_navigation"></include>
-</com.google.android.material.bottomappbar.BottomAppBar>
-<com.google.android.material.floatingactionbutton.FloatingActionButton
-app:fabSize="normal"
-android:id="@+id/fab"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-app:layout_constraintBottom_toBottomOf="@id/bottom_navigation"
-app:layout_constraintRight_toRightOf="parent"
-android:layout_margin="20dp"
-app:fabCustomSize="65dp"
-android:backgroundTint="@color/colorPrimary"
-android:src="@drawable/plus_icon"
-    />
+            </include>
 
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <Button
+            android:id="@+id/done_botton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Done"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="acceptTheNote"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
