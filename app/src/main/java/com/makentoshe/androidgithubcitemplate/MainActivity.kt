@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         piedataset.colors = colorclassarray
         var piedata = PieData(piedataset)
         if (piechart != null) {
+            piechart.setTouchEnabled(false)
             piechart.legend.isEnabled = false
             piechart.description.isEnabled = false
             piechart.setDrawCenterText(true)
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             piechart.setTransparentCircleColor(0xff666666.toInt())
             piechart.setCenterTextSize(50F)
             piechart.centerText = "66";
-            piechart.animateY( 1500)
+            //piechart.animateY( 1000)
             piechart.data = piedata
             piechart.invalidate()
         }
@@ -52,14 +53,14 @@ class MainActivity : AppCompatActivity() {
                         intent = Intent(this, StatsActivity::class.java)
                         startActivity(intent)
                         finish()
-                        overridePendingTransition(0, 0)
+                        overridePendingTransition(R.anim.slidein, R.anim.slideout);
                         true
                     }
                     R.id.ProfileButton -> {
                         intent = Intent(this, SettingsActivity::class.java)
                         startActivity(intent)
                         finish()
-                        overridePendingTransition(0, 0)
+                        overridePendingTransition(R.anim.slidein, R.anim.slideout);
                         true
                     }
                 }

@@ -18,7 +18,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        app:icon="@drawable/apppearance_icon"
+        app:icon="@drawable/appearance_icon"
         app:title="Appearance">
 
         <SwitchPreferenceCompat

@@ -30,14 +30,14 @@ class SettingsActivity : AppCompatActivity() {
                     R.id.HomeButton -> {
                         intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
-                        overridePendingTransition(0, 0)
+                        overridePendingTransition(R.anim.slidein2, R.anim.slideout2);
                         finish()
                         true
                     }
                     R.id.StatsButton -> {
                         intent = Intent(this, StatsActivity::class.java)
                         startActivity(intent)
-                        overridePendingTransition(0, 0)
+                        overridePendingTransition(R.anim.slidein2, R.anim.slideout2);
                         finish()
 
                         true
@@ -66,14 +66,14 @@ class SettingsActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        overridePendingTransition(0, 0)
+        overridePendingTransition(R.anim.slidein2, R.anim.slideout2);
         finish()
         return true
     }
     override fun onBackPressed() {
         intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        overridePendingTransition(0, 0)
+        overridePendingTransition(R.anim.slidein2, R.anim.slideout2);
         finish()
     }
 }

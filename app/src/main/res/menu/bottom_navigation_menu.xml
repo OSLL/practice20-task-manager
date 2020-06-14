@@ -13,6 +13,6 @@
     <item
         android:id="@+id/ProfileButton"
         android:enabled="true"
-        android:icon="@drawable/profile_icon_square"
+        android:icon="@drawable/profile_icon"
         android:title="Profile" />
 </menu>
