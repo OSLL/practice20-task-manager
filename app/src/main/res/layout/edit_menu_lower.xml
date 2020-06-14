@@ -15,9 +15,9 @@
 
         <ImageButton
             android:id="@+id/SetAlarm"
-            android:layout_marginHorizontal="4dp"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginHorizontal="4dp"
             android:background="?attr/selectableItemBackground"
             android:enabled="true"
             android:src="@drawable/newalarm_icon"
@@ -25,9 +25,9 @@
 
         <ImageButton
             android:id="@+id/SetList"
-            android:layout_marginHorizontal="4dp"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginHorizontal="4dp"
             android:background="?attr/selectableItemBackground"
             android:enabled="true"
             android:src="@drawable/listadd_icon"
@@ -35,9 +35,9 @@
 
         <ImageButton
             android:id="@+id/SetAttachment"
-            android:layout_marginHorizontal="4dp"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginHorizontal="4dp"
             android:background="?attr/selectableItemBackground"
             android:enabled="true"
             android:src="@drawable/addattachment_icon"
@@ -45,9 +45,9 @@
 
         <ImageButton
             android:id="@+id/Pin"
-            android:layout_marginHorizontal="4dp"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginHorizontal="4dp"
             android:background="?attr/selectableItemBackground"
             android:enabled="true"
             android:src="@drawable/pin_icon"

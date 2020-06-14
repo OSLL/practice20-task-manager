@@ -1,17 +1,32 @@
 package com.makentoshe.androidgithubcitemplate
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
-
+    lateinit var piechart: PieChart
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        piechart = findViewById<PieChart>(R.id.rating_chart)
+        var pievalues: ArrayList<PieEntry> = ArrayList(0)
+            pievalues.add(0, PieEntry(66f,""))
+            pievalues.add(1,PieEntry(34f,""))
+        var piedataset = PieDataSet(pievalues,"")
+        var colorclassarray = listOf<Int>(Color.BLUE, Color.WHITE)
+        piedataset.colors = colorclassarray
+        var piedata = PieData(piedataset)
+        piechart.setData(piedata)
+        piechart.invalidate()
         val mOnNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
@@ -62,3 +77,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+
+private operator fun PieData.invoke(piedata: PieData) {
+
+}
+

@@ -30,12 +30,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="vertical">
+            app:layout_constraintTop_toTopOf="parent">
 
             <EditText
                 android:id="@+id/editTitle"
@@ -61,11 +62,11 @@
                     android:orientation="vertical">
 
 
-
                     <EditText
                         android:id="@+id/textField"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginHorizontal="10dp"
                         android:hint="Begin your note"
                         android:inputType="textMultiLine"
                         android:scrollbars="vertical"
@@ -76,36 +77,35 @@
                 </LinearLayout>
             </ScrollView>
 
-</LinearLayout>
+        </LinearLayout>
 
-<com.google.android.material.bottomappbar.BottomAppBar
-android:id="@+id/bottom_navigation"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-app:backgroundTint="@color/buttonBackground"
-android:gravity="end"
-app:layout_constraintBottom_toBottomOf="parent">
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            app:backgroundTint="@color/buttonBackground"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-<include
-    layout="@layout/edit_menu_lower"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_toEndOf="@id/bottom_navigation"></include>
-</com.google.android.material.bottomappbar.BottomAppBar>
-<com.google.android.material.floatingactionbutton.FloatingActionButton
-app:fabSize="normal"
-android:id="@+id/fab"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-app:layout_constraintBottom_toBottomOf="@id/bottom_navigation"
-app:layout_constraintRight_toRightOf="parent"
-android:layout_margin="20dp"
-app:fabCustomSize="65dp"
-android:backgroundTint="@color/colorPrimary"
-android:src="@drawable/plus_icon"
-    />
+            <include
+                layout="@layout/edit_menu_lower"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/bottom_navigation"></include>
+        </com.google.android.material.bottomappbar.BottomAppBar>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/plus_icon"
+            app:fabCustomSize="65dp"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_navigation"
+            app:layout_constraintRight_toRightOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
