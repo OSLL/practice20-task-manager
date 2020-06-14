@@ -1,13 +1,9 @@
 package com.makentoshe.androidgithubcitemplate
 
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_edit.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 class EditActivity : AppCompatActivity() {
 
@@ -47,14 +43,14 @@ class EditActivity : AppCompatActivity() {
         return true
     }
 
-   /* fun acceptTheNote(view: View){
-        val acceptIntent = Intent(this, MainActivity::class.java)
-        val titleString = editTitle.text.toString()
-        val noteString = textField.text.toString()
-        acceptIntent.putExtra(MainActivity.acceptedTitle, titleString)
-        acceptIntent.putExtra(MainActivity.acceptedNote, noteString)
-        startActivity(acceptIntent)
-    } */
+    /* fun acceptTheNote(view: View){
+         val acceptIntent = Intent(this, MainActivity::class.java)
+         val titleString = editTitle.text.toString()
+         val noteString = textField.text.toString()
+         acceptIntent.putExtra(MainActivity.acceptedTitle, titleString)
+         acceptIntent.putExtra(MainActivity.acceptedNote, noteString)
+         startActivity(acceptIntent)
+     } */
 
 }
 

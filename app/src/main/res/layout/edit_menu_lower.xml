@@ -7,13 +7,13 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:enabled="true"
-        >
+        android:enabled="true">
+
         <ImageButton
             android:id="@+id/SetColor"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            
+
             android:background="?attr/selectableItemBackground"
             android:enabled="true"
             android:src="@drawable/appearance_icon"
@@ -24,40 +24,41 @@
             android:id="@+id/SetAlarm"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            
+
             android:background="?attr/selectableItemBackground"
             android:enabled="true"
             android:src="@drawable/newalarm_icon"
+            android:tint="@color/colorPrimary"
             android:title="Set alarm" />
 
         <ImageButton
             android:id="@+id/SetList"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            
             android:background="?attr/selectableItemBackground"
             android:enabled="true"
             android:src="@drawable/listadd_icon"
+            android:tint="@color/colorPrimary"
             android:title="Create list" />
 
         <ImageButton
             android:id="@+id/SetAttachment"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            
             android:background="?attr/selectableItemBackground"
             android:enabled="true"
             android:src="@drawable/addattachment_icon"
+            android:tint="@color/colorPrimary"
             android:title="Add attachment" />
 
         <ImageButton
             android:id="@+id/Pin"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            
             android:background="?attr/selectableItemBackground"
             android:enabled="true"
             android:src="@drawable/pin_icon"
+            android:tint="@color/colorPrimary"
             android:title="Pin task" />
     </LinearLayout>
 </FrameLayout>

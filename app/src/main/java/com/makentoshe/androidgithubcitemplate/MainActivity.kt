@@ -1,11 +1,8 @@
 package com.makentoshe.androidgithubcitemplate
 
 import android.content.Intent
-import android.content.res.Resources
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
@@ -21,9 +18,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         var piechart: PieChart = findViewById<PieChart>(R.id.rating_chart)
         var pievalues: ArrayList<PieEntry> = ArrayList(0)
-            pievalues.add(0, PieEntry(34f,""))
-            pievalues.add(1,PieEntry(66f,""))
-        var piedataset = PieDataSet(pievalues,"")
+        pievalues.add(0, PieEntry(34f, ""))
+        pievalues.add(1, PieEntry(66f, ""))
+        var piedataset = PieDataSet(pievalues, "")
         piedataset.setDrawValues(false)
         var colorclassarray = listOf<Int>(Color.TRANSPARENT, 0xff6bbaff.toInt())
         piedataset.colors = colorclassarray
@@ -37,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             //piechart.transparentCircleRadius = 75f
             piechart.setTransparentCircleColor(0xff666666.toInt())
             piechart.setCenterTextSize(50F)
-            piechart.centerText = "66";
+            piechart.centerText = "66"
             //piechart.animateY( 1000)
             piechart.data = piedata
             piechart.invalidate()
@@ -53,20 +50,21 @@ class MainActivity : AppCompatActivity() {
                         intent = Intent(this, StatsActivity::class.java)
                         startActivity(intent)
                         finish()
-                        overridePendingTransition(R.anim.slidein, R.anim.slideout);
+                        overridePendingTransition(R.anim.slidein, R.anim.slideout)
                         true
                     }
                     R.id.ProfileButton -> {
                         intent = Intent(this, SettingsActivity::class.java)
                         startActivity(intent)
                         finish()
-                        overridePendingTransition(R.anim.slidein, R.anim.slideout);
+                        overridePendingTransition(R.anim.slidein, R.anim.slideout)
                         true
                     }
                 }
                 false
             }
-         fun onActivityResult(requestCode:Int, resultCode:Int, data:Intent) {
+
+        fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
             super.onActivityResult(requestCode, resultCode, data)
             finish()
         }
@@ -85,24 +83,24 @@ class MainActivity : AppCompatActivity() {
         //acceptedNote()
     }
 
-   /* fun EditNote(view: View){
-        val editIntent = Intent(this, EditActivity::class.java)
-        startActivity(editIntent)
+    /* fun EditNote(view: View){
+         val editIntent = Intent(this, EditActivity::class.java)
+         startActivity(editIntent)
 
-    }
+     }
 
 
-    companion object {
-        const val acceptedTitle = "acceptedTitle"
-        const val acceptedNote = "acceptedNote"
-    }
+     companion object {
+         const val acceptedTitle = "acceptedTitle"
+         const val acceptedNote = "acceptedNote"
+     }
 
-    fun acceptedNote(){
-        val acceptedTitle = intent.getStringExtra(acceptedTitle)
-        val acceptedNote = intent.getStringExtra(acceptedNote)
-        textView2.text = acceptedTitle //когда у нас будет много заметок, так обращаться уже не выйдет, нужно будет что-то еще придумать
-        textView3.text = acceptedNote
-    }*/ //Я (Ильдар) пока закомментировал, чтоби прикинуть еще что-нибудь по разметке
+     fun acceptedNote(){
+         val acceptedTitle = intent.getStringExtra(acceptedTitle)
+         val acceptedNote = intent.getStringExtra(acceptedNote)
+         textView2.text = acceptedTitle //когда у нас будет много заметок, так обращаться уже не выйдет, нужно будет что-то еще придумать
+         textView3.text = acceptedNote
+     }*/ //Я (Ильдар) пока закомментировал, чтоби прикинуть еще что-нибудь по разметке
 
 
 }
