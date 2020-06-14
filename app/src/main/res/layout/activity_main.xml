@@ -105,7 +105,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="5dp"
-                        android:textSize="10dp"
+                        android:textSize="14sp"
                         android:text="1 April 2021 19:00"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView2"
@@ -131,11 +131,7 @@
                         android:text="@string/Title01"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.6"
-                        android:maxLength="10"/>
+                        app:layout_constraintStart_toStartOf="@id/iconcontainer" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
