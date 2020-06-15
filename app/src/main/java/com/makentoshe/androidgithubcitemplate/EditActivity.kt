@@ -4,6 +4,8 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
+import com.leinardi.android.speeddial.SpeedDialActionItem
+import com.leinardi.android.speeddial.SpeedDialView
 
 class EditActivity : AppCompatActivity() {
 
@@ -30,7 +32,10 @@ class EditActivity : AppCompatActivity() {
         //     //TODO("Not yet implemented")
         // }
         //      })
+
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -51,6 +56,8 @@ class EditActivity : AppCompatActivity() {
          acceptIntent.putExtra(MainActivity.acceptedNote, noteString)
          startActivity(acceptIntent)
      } */
+
+
 
 }
 

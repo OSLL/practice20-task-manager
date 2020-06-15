@@ -1,11 +1,11 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory>
 
         <Preference
             app:icon="@drawable/archive_icon"
             app:title="Archive" />
-
 
     </PreferenceCategory>
 
@@ -34,6 +34,7 @@
     <PreferenceCategory>
 
         <Preference
+            android:backgroundTint="@android:color/holo_green_light"
             app:icon="@drawable/help_icon"
             app:title="Help" />
 
