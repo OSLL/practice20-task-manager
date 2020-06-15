@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var piechart: PieChart = findViewById<PieChart>(R.id.rating_chart)
+        /*var piechart: PieChart = findViewById<PieChart>(R.id.rating_chart)
         var pievalues: ArrayList<PieEntry> = ArrayList(0)
         pievalues.add(0, PieEntry(34f, ""))
         pievalues.add(1, PieEntry(66f, ""))
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             //piechart.animateY( 1000)
             piechart.data = piedata
             piechart.invalidate()
-        }
+        }*/
         val mOnNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
