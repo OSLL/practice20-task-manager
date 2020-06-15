@@ -4,19 +4,39 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.xwray.groupie.*
+import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
+    private val section = Section()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var items = MutableList<TaskItem>(0) { a -> TaskItem(Task())}
+        var task = Task()
+        for (i in 0..10){
+        task.title=java.util.Calendar.getInstance().timeInMillis.toString()
+        items.add(TaskItem(task))}
         setContentView(R.layout.activity_main)
-        var piechart: PieChart = findViewById<PieChart>(R.id.rating_chart)
+        var groupAdapter = GroupAdapter<ViewHolder>().apply {
+            addAll(items)
+        }
+        var noteList: RecyclerView = findViewById(R.id.main_recycler_view)
+        main_recycler_view.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity).apply{
+            adapter = groupAdapter
+            }
+        }
+
+        /*var piechart: PieChart = findViewById<PieChart>(R.id.rating_chart)
         var pievalues: ArrayList<PieEntry> = ArrayList(0)
         pievalues.add(0, PieEntry(34f, ""))
         pievalues.add(1, PieEntry(66f, ""))
@@ -38,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             //piechart.animateY( 1000)
             piechart.data = piedata
             piechart.invalidate()
-        }
+        }*/
         val mOnNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
