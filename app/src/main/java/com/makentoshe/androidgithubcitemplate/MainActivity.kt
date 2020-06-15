@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.xwray.groupie.*
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.rating_layout.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -97,9 +98,38 @@ class MainActivity : AppCompatActivity() {
             //intent.setFlags(FAB_ALIGNMENT_MODE_END)
             startActivity(intent)
             //Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
+            bottom_navigation.selectedItemId = R.id.HomeButton
+            bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         }
-        bottom_navigation.selectedItemId = R.id.HomeButton
-
+        /*var solved_today = 0
+        var solved_today_pivo : String = "Solved today: " + solved_today.toString()
+        text_solved.text = solved_today_pivo
+        var rejected_today = 0
+        var rejected_today_pivo : String = "Rejected today: " + rejected_today.toString()
+        text_rejected.text = rejected_today_pivo
+        var piechart: PieChart = findViewById<PieChart>(R.id.rating_chart)
+        var pievalues: ArrayList<PieEntry> = ArrayList(0)
+        pievalues.add(0, PieEntry(34f, ""))
+        pievalues.add(1, PieEntry(66f, ""))
+        var piedataset = PieDataSet(pievalues, "")
+        piedataset.setDrawValues(false)
+        var colorclassarray = listOf<Int>(Color.TRANSPARENT, 0xff6bbaff.toInt())
+        piedataset.colors = colorclassarray
+        var piedata = PieData(piedataset)
+        if (piechart != null) {
+            piechart.setTouchEnabled(false)
+            piechart.legend.isEnabled = false
+            piechart.description.isEnabled = false
+            piechart.setDrawCenterText(true)
+            piechart.holeRadius = 70f
+            //piechart.transparentCircleRadius = 75f
+            piechart.setTransparentCircleColor(0xff666666.toInt())
+            piechart.setCenterTextSize(50F)
+            piechart.centerText = "66"
+            //piechart.animateY( 1000)
+            piechart.data = piedata
+            piechart.invalidate()
+        }*/
         //acceptedNote()
     }
 
