@@ -1,13 +1,9 @@
 package com.makentoshe.androidgithubcitemplate
 
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.edit_menu_lower.*
 
 class EditActivity : AppCompatActivity() {
 
@@ -18,18 +14,6 @@ class EditActivity : AppCompatActivity() {
         actionBar?.setBackgroundDrawable(ColorDrawable(0xff6bbaff.toInt()))
         actionBar?.setDisplayHomeAsUpEnabled(true)
         setContentView(R.layout.activity_edit)
-        SetColor.setOnClickListener {
-            Toast.makeText(this, "Set Color", Toast.LENGTH_SHORT ).show()
-        }
-        Pin.setOnClickListener {
-            Toast.makeText(this, "Pin", Toast.LENGTH_SHORT ).show()
-        }
-        SetAlarm.setOnClickListener {
-            Toast.makeText(this, "Set Alarm", Toast.LENGTH_SHORT ).show()
-        }
-        SetList.setOnClickListener {
-            Toast.makeText(this, "Add List", Toast.LENGTH_SHORT ).show()
-        }
 
         // titlenote.addTextChangedListener(object: TextWatcher{
         //override fun afterTextChanged(s: Editable) {
@@ -58,6 +42,15 @@ class EditActivity : AppCompatActivity() {
         finish()
         return true
     }
+
+    /* fun acceptTheNote(view: View){
+         val acceptIntent = Intent(this, MainActivity::class.java)
+         val titleString = editTitle.text.toString()
+         val noteString = textField.text.toString()
+         acceptIntent.putExtra(MainActivity.acceptedTitle, titleString)
+         acceptIntent.putExtra(MainActivity.acceptedNote, noteString)
+         startActivity(acceptIntent)
+     } */
 
 }
 
