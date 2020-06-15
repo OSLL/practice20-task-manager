@@ -59,7 +59,6 @@ class MainActivity : AppCompatActivity() {
             bottom_navigation.selectedItemId = R.id.HomeButton
             bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         }
-        setContentView(R.layout.rating_layout)
         var solved_today = 0
         var solved_today_pivo : String = "Solved today: " + solved_today.toString()
         text_solved.text = solved_today_pivo
