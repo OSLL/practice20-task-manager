@@ -23,11 +23,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         var items = MutableList<TaskItem>(0) { a -> TaskItem(Task())}
         var task = Task()
-        for (i in 0..10){
+        for (i in 1..10){
         task.title=java.util.Calendar.getInstance().timeInMillis.toString()
         items.add(TaskItem(task))}
         setContentView(R.layout.activity_main)
         var groupAdapter = GroupAdapter<ViewHolder>().apply {
+            add(RatingItem(Rating(Rating = 34)))
             addAll(items)
         }
         var noteList: RecyclerView = findViewById(R.id.main_recycler_view)
