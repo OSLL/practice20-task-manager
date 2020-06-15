@@ -77,9 +77,8 @@ class MainActivity : AppCompatActivity() {
             //intent.setFlags(FAB_ALIGNMENT_MODE_END)
             startActivity(intent)
             //Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
-            bottom_navigation.selectedItemId = R.id.HomeButton
-            bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         }
+        bottom_navigation.selectedItemId = R.id.HomeButton
 
         //acceptedNote()
     }
