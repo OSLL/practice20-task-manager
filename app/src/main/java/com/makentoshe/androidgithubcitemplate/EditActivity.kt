@@ -3,9 +3,16 @@ package com.makentoshe.androidgithubcitemplate
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
+import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_edit.*
 
 class EditActivity : AppCompatActivity() {
+
+    var isOpen = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +37,36 @@ class EditActivity : AppCompatActivity() {
         //     //TODO("Not yet implemented")
         // }
         //      })
+
+        val fabOpen = AnimationUtils.loadAnimation(this, R.anim.fab_open)
+        val fabClose = AnimationUtils.loadAnimation(this, R.anim.fab_close)
+        val fabRClockWise = AnimationUtils.loadAnimation(this, R.anim.rotate_clockwise)
+        val fabRAntiClockWise = AnimationUtils.loadAnimation(this, R.anim.rotate_anticlockwise)
+
+        add_button.setOnClickListener{
+
+            if (isOpen){
+                _1_.startAnimation(fabClose)
+                _2_.startAnimation(fabClose)
+                add_button.startAnimation(fabRClockWise)
+
+                isOpen = false
+            }
+
+            else{
+                _1_.startAnimation(fabOpen)
+                _2_.startAnimation(fabOpen)
+                add_button.startAnimation(fabRAntiClockWise)
+
+                _1_.isClickable
+                _2_.isClickable
+
+                isOpen = true
+
+            }
+            _1_.setOnClickListener{Toast.makeText(this, "_1_", Toast.LENGTH_SHORT).show()}
+            _2_.setOnClickListener{Toast.makeText(this, "_2_", Toast.LENGTH_SHORT).show()}
+        }
 
     }
 
