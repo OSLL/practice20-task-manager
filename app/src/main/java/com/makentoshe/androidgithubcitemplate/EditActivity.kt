@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_edit.*
 
-
 class EditActivity : AppCompatActivity() {
 
     var isOpen = false
@@ -72,7 +71,6 @@ class EditActivity : AppCompatActivity() {
     }
 
 
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.edit_menu_upper, menu)
@@ -92,7 +90,6 @@ class EditActivity : AppCompatActivity() {
          acceptIntent.putExtra(MainActivity.acceptedNote, noteString)
          startActivity(acceptIntent)
      } */
-
 
 
 }

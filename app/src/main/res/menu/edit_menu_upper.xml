@@ -1,23 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/SetColor"
-        android:enabled="true"
-        android:icon="@drawable/delete_icon"
-        android:title="Delete"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/SetAlarm"
-        android:enabled="true"
-        android:icon="@drawable/undo_icon"
-        android:title="Undo"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/SetList"
-        android:enabled="true"
-        android:icon="@drawable/redo_icon"
-        android:title="Redo"
-        app:showAsAction="always" />
-</menu>
+<?xml version="1.0" encoding="utf-8"?><menu xmlns:android="http://schemas.android.com/apk/res/android"    xmlns:app="http://schemas.android.com/apk/res-auto">    <item        android:id="@+id/SetColor"        android:enabled="true"        android:icon="@drawable/delete_icon"        android:title="Delete"        app:showAsAction="always" />    <item        android:id="@+id/SetAlarm"        android:enabled="true"        android:icon="@drawable/undo_icon"        android:title="Undo"        app:showAsAction="always" />    <item        android:id="@+id/SetList"        android:enabled="true"        android:icon="@drawable/redo_icon"        android:title="Redo"        app:showAsAction="always" /></menu>
