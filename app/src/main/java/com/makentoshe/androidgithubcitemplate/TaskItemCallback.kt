@@ -1,4 +1,3 @@
-import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.xwray.groupie.GroupAdapter
@@ -6,16 +5,26 @@ import com.xwray.groupie.ViewHolder
 
 
 class SwipeCallback(adapter: GroupAdapter<ViewHolder>) :
-    ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+    ItemTouchHelper.SimpleCallback(0,0) {
+    private fun removeItem(pos: Int, adapter: GroupAdapter<ViewHolder>) {
+
+    }
     private val mAdapter: GroupAdapter<ViewHolder> = adapter
     override fun getMovementFlags(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder
     ): Int {
+        val pos = viewHolder.adapterPosition
         return ItemTouchHelper.Callback.makeMovementFlags(
-            0,
-            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+            createDragFlags(pos),
+            createSwipeFlags(pos)
         )
+    }
+    private fun createDragFlags(pos: Int) : Int {
+        return if (pos == 0) 0 else ItemTouchHelper.UP or ItemTouchHelper.DOWN
+    }
+    private fun createSwipeFlags(pos: Int) : Int {
+        return if (pos == 0) 0 else ItemTouchHelper.START or ItemTouchHelper.END
     }
 
     //This method is not needed, hence return false
@@ -29,6 +38,7 @@ class SwipeCallback(adapter: GroupAdapter<ViewHolder>) :
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         val position = viewHolder.adapterPosition
+        removeItem(position, mAdapter)
     }
 
 }
