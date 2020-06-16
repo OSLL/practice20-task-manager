@@ -10,8 +10,7 @@
     android:backgroundTint="@color/windowBackground"
     app:cardCornerRadius="10dp"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:onClick="delete">
+    app:layout_constraintTop_toTopOf="parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

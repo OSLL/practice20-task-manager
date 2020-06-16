@@ -106,6 +106,7 @@ class MainActivity : AppCompatActivity() {
             var groupAdapter = GroupAdapter<ViewHolder>()
             groupAdapter.add(RatingItem(Rating(Rating = 34)))
             for (i in items) groupAdapter.add(TaskItem(i))
+
             main_recycler_view.apply {
                 layoutManager = LinearLayoutManager(this@MainActivity)
                 adapter = groupAdapter
