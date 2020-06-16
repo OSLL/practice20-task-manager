@@ -1,14 +1,16 @@
 package com.makentoshe.androidgithubcitemplate
 
+import SwipeCallback
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.xwray.groupie.Group
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.kotlinandroidextensions.ViewHolder
+import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
 import java.sql.Date
 
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         val items = MutableList<Task>(0) { a -> Task() }
         setContentView(R.layout.activity_main)
         var groupAdapter = GroupAdapter<ViewHolder>().apply {
@@ -110,8 +113,10 @@ class MainActivity : AppCompatActivity() {
             main_recycler_view.apply {
                 layoutManager = LinearLayoutManager(this@MainActivity)
                 adapter = groupAdapter
+                attachSwipeCallback(main_recycler_view, adapter as GroupAdapter<ViewHolder>)
             }
             bottom_navigation.selectedItemId = R.id.HomeButton
+
 
 
             /*var solved_today = 0
@@ -166,6 +171,10 @@ class MainActivity : AppCompatActivity() {
      }*/ //Я (Ильдар) пока закомментировал, чтоби прикинуть еще что-нибудь по разметке
 
 
+    }
+    private fun attachSwipeCallback(recyclerView:RecyclerView, mAdapter:GroupAdapter<ViewHolder>) {
+        val itemTouchHelper = ItemTouchHelper(SwipeCallback(mAdapter))
+        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 }
 

@@ -1,13 +1,14 @@
 package com.makentoshe.androidgithubcitemplate
 
 import android.view.View
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.note_layout.*
 
 class TaskItem(private val task: Task) : Item() {
-    override fun getLayout() = R.layout.note_layout
 
+    override fun getLayout() = R.layout.note_layout
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.apply {
             note_title.text = task.title
