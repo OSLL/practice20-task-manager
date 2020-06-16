@@ -1,4 +1,3 @@
-import MainAdapter.ViewHolder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,7 @@ import com.makentoshe.androidgithubcitemplate.TaskNote
 
 private const val VIEW_TYPE_RATING_CHART: Int = 1
 private const val VIEW_TYPE_NOTE: Int = 2
+
 class MainAdapter(
     private var data: List<TaskNote>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -22,13 +22,16 @@ class MainAdapter(
 
 
     }
+
     override fun getItemViewType(position: Int): Int {
         return if (position == 0) VIEW_TYPE_RATING_CHART else VIEW_TYPE_NOTE
-        }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return  when (viewType) {
+        return when (viewType) {
             VIEW_TYPE_RATING_CHART -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.rating_layout, parent)
+                val view =
+                    LayoutInflater.from(parent.context).inflate(R.layout.rating_layout, parent)
                 RatingChartHolder(view)
             }
             else -> {
@@ -51,9 +54,11 @@ class MainAdapter(
         var note_alarm_icon: ImageView = view.findViewById(R.id.alarm_icon)
         var note_bookmark_icon: ImageView = view.findViewById(R.id.bookmark_icon)
     }
+
     private fun bindRatingChartHolder(holder: RatingChartHolder, position: Int) {
         val rating = data[position] as Rating
     }
+
     private fun bindNoteHolder(holder: NoteHolder, position: Int) {
         val task = data[position] as Task
     }

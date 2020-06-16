@@ -1,14 +1,12 @@
 package com.makentoshe.androidgithubcitemplate
 
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager
 import com.github.mikephil.charting.charts.BarChart
-import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -43,8 +41,8 @@ class StatsActivity : AppCompatActivity() {
         Bardataset.colors = colorclassarray
         var Bardata = BarData(Bardataset)
         if (Barchart != null) {
-            Barchart.getXAxis().setValueFormatter(IndexAxisValueFormatter(labels_month))
-            Barchart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM)
+            Barchart.xAxis.valueFormatter = IndexAxisValueFormatter(labels_month)
+            Barchart.xAxis.position = XAxis.XAxisPosition.BOTTOM
             Barchart.setTouchEnabled(false)
             Barchart.legend.isEnabled = false
             Barchart.description.isEnabled = false
@@ -52,7 +50,7 @@ class StatsActivity : AppCompatActivity() {
             Barchart.data = Bardata
             Barchart.setFitBars(true)
             Barchart.setDrawBorders(false)
-            Barchart.getXAxis().setDrawGridLines(false)
+            Barchart.xAxis.setDrawGridLines(false)
             Barchart.axisRight.isEnabled = false
             Barchart.invalidate()
         }
@@ -80,17 +78,17 @@ class StatsActivity : AppCompatActivity() {
         if (Linechart != null) {
             Linedataset.lineWidth = 5f
             Linedataset.circleRadius = 5f
-            Linechart.getAxisLeft().setDrawLabels(false)
-            Linechart.getXAxis().setValueFormatter(IndexAxisValueFormatter(labels_task))
-            Linechart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM)
+            Linechart.axisLeft.setDrawLabels(false)
+            Linechart.xAxis.valueFormatter = IndexAxisValueFormatter(labels_task)
+            Linechart.xAxis.position = XAxis.XAxisPosition.BOTTOM
             Linechart.setTouchEnabled(false)
             Linechart.legend.isEnabled = false
             Linechart.description.isEnabled = false
             Linechart.data = Linedata
             Linechart.setDrawBorders(false)
-            Linechart.getAxisLeft().setDrawGridLines(true)
-            Linechart.getXAxis().setDrawGridLines(false)
-            Linechart.getAxisRight().setEnabled(false)
+            Linechart.axisLeft.setDrawGridLines(true)
+            Linechart.xAxis.setDrawGridLines(false)
+            Linechart.axisRight.isEnabled = false
             Linechart.invalidate()
         }
         title = null
@@ -126,20 +124,21 @@ class StatsActivity : AppCompatActivity() {
             finish()
         }
     }
-        override fun onSupportNavigateUp(): Boolean {
-            intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            overridePendingTransition(R.anim.slidein2, R.anim.slideout2)
-            finish()
-            return true
-        }
 
-        override fun onBackPressed() {
-            intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            overridePendingTransition(R.anim.slidein2, R.anim.slideout2)
-            finish()
+    override fun onSupportNavigateUp(): Boolean {
+        intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slidein2, R.anim.slideout2)
+        finish()
+        return true
+    }
 
-        }
+    override fun onBackPressed() {
+        intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slidein2, R.anim.slideout2)
+        finish()
+
+    }
 
 }

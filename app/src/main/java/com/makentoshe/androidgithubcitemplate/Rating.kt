@@ -1,9 +1,7 @@
 package com.makentoshe.androidgithubcitemplate
 
 class Rating(
-    val Rating:Int = 100,
-    val SolvedToday: Int = 0,
-    val RejectedToday: Int = 0
-) : TaskNote {
-
-}
+    var Rating: Int = 100,
+    var SolvedToday: Int = 0,
+    var RejectedToday: Int = 0
+) : TaskNote

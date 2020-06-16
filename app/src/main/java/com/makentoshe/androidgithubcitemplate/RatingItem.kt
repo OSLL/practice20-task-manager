@@ -7,7 +7,6 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import kotlinx.android.synthetic.main.note_layout.*
 import kotlinx.android.synthetic.main.rating_layout.*
 
 class RatingItem(private val rating: Rating) : Item() {
@@ -22,7 +21,7 @@ class RatingItem(private val rating: Rating) : Item() {
         viewHolder.text_rejected.text = rejected_today_pivo
         var piechart: PieChart = viewHolder.rating_chart
         var pievalues: ArrayList<PieEntry> = ArrayList(0)
-        pievalues.add(0, PieEntry((100-rating.Rating).toFloat(), ""))
+        pievalues.add(0, PieEntry((100 - rating.Rating).toFloat(), ""))
         pievalues.add(1, PieEntry(rating.Rating.toFloat(), ""))
         var piedataset = PieDataSet(pievalues, "")
         piedataset.setDrawValues(false)
@@ -38,7 +37,7 @@ class RatingItem(private val rating: Rating) : Item() {
             //piechart.transparentCircleRadius = 75f
             piechart.setTransparentCircleColor(0xff666666.toInt())
             piechart.setCenterTextSize(50F)
-            piechart.centerText = "66"
+            piechart.centerText = "${rating.Rating}"
             //piechart.animateY( 1000)
             piechart.data = piedata
             piechart.invalidate()
