@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.xwray.groupie.*
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.note_layout.*
 import kotlinx.android.synthetic.main.rating_layout.*
 
 
