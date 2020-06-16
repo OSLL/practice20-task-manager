@@ -97,6 +97,21 @@
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/_3_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:elevation="6dp"
+            android:src="@drawable/archive_icon"
+            android:visibility="invisible"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toTopOf="@id/_2_"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:pressedTranslationZ="12dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/_2_"
@@ -104,10 +119,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_marginEnd="22dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/colorPrimary"
             android:elevation="6dp"
-            android:src="@drawable/newalarm_icon"
+            android:src="@drawable/cross_icon"
             android:visibility="invisible"
             app:fabSize="mini"
             app:layout_constraintBottom_toTopOf="@id/_1_"
@@ -123,7 +138,7 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/colorPrimary"
             android:elevation="6dp"
-            android:src="@drawable/bookmark_icon"
+            android:src="@drawable/check_icon"
             android:visibility="invisible"
             app:fabSize="mini"
             app:layout_constraintBottom_toTopOf="@id/add_button"
@@ -138,7 +153,7 @@
             android:layout_margin="16dp"
             android:backgroundTint="@color/colorPrimary"
             android:elevation="6dp"
-            android:src="@drawable/plus_icon"
+            android:src="@drawable/exit_icon"
             app:fabSize="normal"
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
             app:layout_constraintEnd_toEndOf="parent"

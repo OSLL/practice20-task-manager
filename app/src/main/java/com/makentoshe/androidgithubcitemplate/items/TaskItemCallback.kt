@@ -1,13 +1,20 @@
+package com.makentoshe.androidgithubcitemplate.items
+
+import android.app.Application
+import android.util.Log
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.makentoshe.androidgithubcitemplate.MainActivity
+import com.makentoshe.androidgithubcitemplate.items.TaskDao
+import com.makentoshe.androidgithubcitemplate.items.TaskDatabase
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 
 
-class SwipeCallback(adapter: GroupAdapter<ViewHolder>) :
+class SwipeCallback(adapter: GroupAdapter<ViewHolder>, application: Application) :
     ItemTouchHelper.SimpleCallback(0,0) {
+    val app = application
     private fun removeItem(pos: Int, adapter: GroupAdapter<ViewHolder>) {
-
     }
     private val mAdapter: GroupAdapter<ViewHolder> = adapter
     override fun getMovementFlags(
@@ -35,10 +42,10 @@ class SwipeCallback(adapter: GroupAdapter<ViewHolder>) :
     ): Boolean {
         return false
     }
-
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         val position = viewHolder.adapterPosition
-        removeItem(position, mAdapter)
+        //Log.v("Pos:", position.toString())
+       // MainActivity().updateAdapter(MainActivity().groupAdapter, app)
     }
 
 }

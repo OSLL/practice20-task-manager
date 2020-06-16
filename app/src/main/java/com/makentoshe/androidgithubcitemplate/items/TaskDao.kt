@@ -19,6 +19,10 @@ interface TaskDao {
 
     @Delete
     fun delete(employee: Task?)
+
+    @Query("DELETE FROM Task")
+    fun deleteAll()
+
     @Update
     fun updateTask(vararg todos: Task)
 }

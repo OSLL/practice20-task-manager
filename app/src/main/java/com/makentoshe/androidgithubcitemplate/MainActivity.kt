@@ -1,8 +1,10 @@
 package com.makentoshe.androidgithubcitemplate
 
-import SwipeCallback
+import android.app.Application
+import com.makentoshe.androidgithubcitemplate.items.SwipeCallback
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,34 +14,38 @@ import com.makentoshe.androidgithubcitemplate.items.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
-import java.sql.Date
+import kotlinx.android.synthetic.main.activity_main.bottom_navigation
 
 
 class MainActivity : AppCompatActivity() {
-
-    var db: TaskDatabase = App().getDatabase()
-    var taskDao = db.taskDao()
+    var groupAdapter = GroupAdapter<ViewHolder>()
+    fun updateAdapter(groupAdapter: GroupAdapter<ViewHolder>) {
+        var db = TaskDatabase.getDatabase(application)
+        var taskDao = db.taskDao()
+        groupAdapter.clear()
+        groupAdapter
+            .add(
+            RatingItem(
+                Rating(
+                    Rating = 34
+                )
+            )
+        )
+        groupAdapter.addAll(taskDao.getAll().map { TaskItem(it) })
+        main_recycler_view.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = groupAdapter
+            attachSwipeCallback(main_recycler_view, adapter as GroupAdapter<ViewHolder>)
+        }
+        //genTask(taskDao)
+        //taskDao.deleteAll()
+        //Log.v("Taskdao size", taskDao.getCount().toString())
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        var groupAdapter = GroupAdapter<ViewHolder>().apply {
-            add(
-                RatingItem(
-                    Rating(
-                        Rating = 34
-                    )
-                )
-            )
-        }
-        var noteList: RecyclerView = findViewById(R.id.main_recycler_view)
-        main_recycler_view.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity).apply {
-                adapter = groupAdapter
-            }
-        }
-
+        updateAdapter(groupAdapter)
         val mOnNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
@@ -73,39 +79,27 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        bottom_navigation.selectedItemId = R.id.HomeButton
         floating_action_button.setOnClickListener {
             intent = Intent(this, EditActivity::class.java)
             //intent.setFlags(FAB_ALIGNMENT_MODE_END)
             startActivity(intent)
+            finish()
             //Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
         }
         floating_action_button2.setOnClickListener {
-            var groupAdapter = GroupAdapter<ViewHolder>()
-            groupAdapter.add(
-                RatingItem(
-                    Rating(
-                        Rating = 34
-                    )
-                )
-            )
-            genTask().map { TaskItem(it) }
+            updateAdapter(groupAdapter)
 
-            main_recycler_view.apply {
-                layoutManager = LinearLayoutManager(this@MainActivity)
-                adapter = groupAdapter
-                attachSwipeCallback(main_recycler_view, adapter as GroupAdapter<ViewHolder>)
-            }
-            bottom_navigation.selectedItemId = R.id.HomeButton
         }
     }
     private fun attachSwipeCallback(
         recyclerView: RecyclerView,
         mAdapter: GroupAdapter<ViewHolder>
     ) {
-        val itemTouchHelper = ItemTouchHelper(SwipeCallback(mAdapter))
+        val itemTouchHelper = ItemTouchHelper(SwipeCallback(mAdapter, application))
         itemTouchHelper.attachToRecyclerView(recyclerView)
     }
-    private fun newEntry() {
+    private fun newEntry(taskDao: TaskDao) {
         val titlestr = (1..100000).random().toString()
         val textstr = (1..100000000000000).random().toString()
         val task = Task()
@@ -116,11 +110,10 @@ class MainActivity : AppCompatActivity() {
         task.bookmark = 1
         task.image = "a"
         taskDao.insert(task)
+        taskDao.update(task)
     }
-    private fun genTask(): List<Task>{
-        newEntry()
-        val items = taskDao.getAll()
-        return items
+    private fun genTask(taskDao: TaskDao){
+        newEntry(taskDao)
     }
 
 }
