@@ -11,7 +11,7 @@
         <item name="colorOnPrimary">@color/colorPrimary</item>
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="colorOnSurface">@color/colorOnSurface</item>
-
+        <item name="android:colorForeground">@color/textColorSecondary</item>
     </style>
 
     <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">

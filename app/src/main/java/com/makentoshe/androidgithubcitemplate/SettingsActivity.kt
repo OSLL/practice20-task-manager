@@ -1,12 +1,15 @@
 package com.makentoshe.androidgithubcitemplate
 
+import android.R
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.preference.PreferenceFragmentCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -16,31 +19,27 @@ class SettingsActivity : AppCompatActivity() {
         actionBar?.title = "Profile"
         actionBar?.setBackgroundDrawable(ColorDrawable(0xff6bbaff.toInt()))
         actionBar?.setDisplayHomeAsUpEnabled(true)
-
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.settings, SettingsFragment())
-            .commit()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val mOnNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
-                    R.id.HomeButton -> {
+                    com.makentoshe.androidgithubcitemplate.R.id.HomeButton -> {
                         intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
-                        overridePendingTransition(R.anim.slidein2, R.anim.slideout2)
+                        overridePendingTransition(com.makentoshe.androidgithubcitemplate.R.anim.slidein2, com.makentoshe.androidgithubcitemplate.R.anim.slideout2)
                         finish()
                         true
                     }
-                    R.id.StatsButton -> {
+                    com.makentoshe.androidgithubcitemplate.R.id.StatsButton -> {
                         intent = Intent(this, StatsActivity::class.java)
                         startActivity(intent)
-                        overridePendingTransition(R.anim.slidein2, R.anim.slideout2)
+                        overridePendingTransition(com.makentoshe.androidgithubcitemplate.R.anim.slidein2, com.makentoshe.androidgithubcitemplate.R.anim.slideout2)
                         finish()
 
                         true
                     }
-                    R.id.ProfileButton -> {
+                    com.makentoshe.androidgithubcitemplate.R.id.ProfileButton -> {
                         //goto up
                         true
                     }
@@ -48,23 +47,15 @@ class SettingsActivity : AppCompatActivity() {
                 false
             }
 
-        setContentView(R.layout.activity_settings)
-        bottom_navigation.selectedItemId = R.id.ProfileButton
+        setContentView(com.makentoshe.androidgithubcitemplate.R.layout.activity_settings)
+        bottom_navigation.selectedItemId = com.makentoshe.androidgithubcitemplate.R.id.ProfileButton
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
-
-    }
-
-    class SettingsFragment : PreferenceFragmentCompat() {
-        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-            setPreferencesFromResource(R.xml.root_preferences, rootKey)
-        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
         intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        overridePendingTransition(R.anim.slidein2, R.anim.slideout2)
+        overridePendingTransition(com.makentoshe.androidgithubcitemplate.R.anim.slidein2, com.makentoshe.androidgithubcitemplate.R.anim.slideout2)
         finish()
         return true
     }
@@ -72,7 +63,7 @@ class SettingsActivity : AppCompatActivity() {
     override fun onBackPressed() {
         intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        overridePendingTransition(R.anim.slidein2, R.anim.slideout2)
+        overridePendingTransition(com.makentoshe.androidgithubcitemplate.R.anim.slidein2, com.makentoshe.androidgithubcitemplate.R.anim.slideout2)
         finish()
     }
 }
