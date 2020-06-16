@@ -7,8 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.xwray.groupie.Group
+import com.makentoshe.androidgithubcitemplate.items.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,12 +17,25 @@ import java.sql.Date
 
 
 class MainActivity : AppCompatActivity() {
-    val items = MutableList<Task>(0) { a -> Task() }
+
+    val db = Room.databaseBuilder(
+        getApplicationContext(),
+        TaskDatabase::class.java, "todo-list.db"
+    ).build()
+    var taskDao = db.taskDao()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         var groupAdapter = GroupAdapter<ViewHolder>().apply {
-            add(RatingItem(Rating(Rating = 34)))
+            add(
+                RatingItem(
+                    Rating(
+                        Rating = 34
+                    )
+                )
+            )
         }
         var noteList: RecyclerView = findViewById(R.id.main_recycler_view)
         main_recycler_view.apply {
@@ -70,19 +84,15 @@ class MainActivity : AppCompatActivity() {
             //Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
         }
         floating_action_button2.setOnClickListener {
-            val titlestr = (1..100000).random().toString()
-            val textstr = (1..100000000000000).random().toString()
-            val task = Task()
-            task.title = titlestr
-            task.text = textstr
-            task.pin = true
-            task.date = Date(System.currentTimeMillis() + 100000)
-            task.bookmark = 1
-            task.image = "a"
-            items.add(items.size, task)
             var groupAdapter = GroupAdapter<ViewHolder>()
-            groupAdapter.add(RatingItem(Rating(Rating = 34)))
-            groupAdapter.addAll(items.map { TaskItem (it) })
+            groupAdapter.add(
+                RatingItem(
+                    Rating(
+                        Rating = 34
+                    )
+                )
+            )
+            genTask().map { TaskItem(it) }
 
             main_recycler_view.apply {
                 layoutManager = LinearLayoutManager(this@MainActivity)
@@ -98,6 +108,23 @@ class MainActivity : AppCompatActivity() {
     ) {
         val itemTouchHelper = ItemTouchHelper(SwipeCallback(mAdapter))
         itemTouchHelper.attachToRecyclerView(recyclerView)
+    }
+    private fun newEntry() {
+        val titlestr = (1..100000).random().toString()
+        val textstr = (1..100000000000000).random().toString()
+        val task = Task()
+        task.title = titlestr
+        task.text = textstr
+        task.pin = true
+        task.date = Date(System.currentTimeMillis() + 100000)
+        task.bookmark = 1
+        task.image = "a"
+        taskDao.insert(task)
+    }
+    private fun genTask(): List<Task> {
+        newEntry()
+        val items = taskDao.getAll()
+        return listOf(Task(), Task())
     }
 
 }
