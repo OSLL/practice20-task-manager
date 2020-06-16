@@ -9,7 +9,7 @@ data class Task(
     var id: Int = 0,
     var title: String = "",
     var text: String = "",
-    var date: Date = Date(0),
+    var date: Long = 0,
     var image: String = "",
     var pin: Boolean = false,
     var bookmark: Int = 0

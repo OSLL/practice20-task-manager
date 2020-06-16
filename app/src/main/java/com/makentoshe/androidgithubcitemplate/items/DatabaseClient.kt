@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 
 
-class DatabaseClient(private val mCtx: Context) {
+class DatabaseClient private constructor(private val mCtx: Context) {
 
     //our app database object
     private val appDatabase: TaskDatabase

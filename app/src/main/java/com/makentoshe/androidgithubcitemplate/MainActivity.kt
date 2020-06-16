@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Room
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.makentoshe.androidgithubcitemplate.items.*
 import com.xwray.groupie.GroupAdapter
@@ -18,10 +17,7 @@ import java.sql.Date
 
 class MainActivity : AppCompatActivity() {
 
-    val db = Room.databaseBuilder(
-        getApplicationContext(),
-        TaskDatabase::class.java, "todo-list.db"
-    ).build()
+    var db: TaskDatabase = App().getDatabase()
     var taskDao = db.taskDao()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -116,15 +112,15 @@ class MainActivity : AppCompatActivity() {
         task.title = titlestr
         task.text = textstr
         task.pin = true
-        task.date = Date(System.currentTimeMillis() + 100000)
+        task.date = System.currentTimeMillis() + 100000
         task.bookmark = 1
         task.image = "a"
         taskDao.insert(task)
     }
-    private fun genTask(): List<Task> {
+    private fun genTask(): List<Task>{
         newEntry()
         val items = taskDao.getAll()
-        return listOf(Task(), Task())
+        return items
     }
 
 }

@@ -15,7 +15,7 @@ class TaskItem(private val task: Task) : Item() {
             note_title.text = task.title
             if (task.text != "") note_text.visibility = View.VISIBLE
             note_text.text = task.text
-            if (task.date.time > 0) {
+            if (task.date > 0) {
                 alarm_icon.visibility = View.VISIBLE
                 note_date.visibility = View.VISIBLE
                 note_date.text = "High Noon"
