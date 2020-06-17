@@ -10,6 +10,14 @@
     app:menu="@menu/bottom_navigation_menu"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="30dp" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
@@ -45,7 +53,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-        app:layout_constraintTop_toBottomOf="@id/search_bar" />
+        app:layout_constraintTop_toBottomOf="@id/search_bar"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/floating_action_button"

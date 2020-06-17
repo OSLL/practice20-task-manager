@@ -7,6 +7,14 @@
     android:background="@color/windowBackground"
     tools:context=".SettingsActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="30dp" />
+
     <FrameLayout
         android:id="@+id/settings"
         android:layout_width="match_parent"
