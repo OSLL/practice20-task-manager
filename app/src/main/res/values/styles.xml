@@ -23,4 +23,21 @@
         <item name="colorOnPrimary">@color/colorPrimary</item>
     </style>
 
+    <!-- Dark Theme -->
+
+    <style name="AppTheme_Dark">
+        <item name="colorAccent">@color/colorAccent_Dark</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="colorPrimary">@color/colorPrimary_Dark</item>
+        <item name="colorOnPrimary">@color/colorPrimary_Dark</item>
+        <item name="android:textColor">@color/textColorPrimary_Dark</item>
+        <item name="colorOnSurface">@color/colorOnSurface_Dark</item>
+        <item name="android:colorForeground">@color/textColorSecondary_Dark</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView_Dark" parent="">
+        <item name="colorPrimary">@color/windowBackground_Dark</item>
+        <item name="colorOnPrimary">@color/colorPrimary_Dark</item>
+    </style>
+
 </resources>

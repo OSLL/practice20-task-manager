@@ -1,17 +1,17 @@
 package com.makentoshe.androidgithubcitemplate
 
-import android.R
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.View
+import android.widget.CompoundButton
+import android.widget.Switch
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,14 +27,20 @@ class SettingsActivity : AppCompatActivity() {
                     com.makentoshe.androidgithubcitemplate.R.id.HomeButton -> {
                         intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
-                        overridePendingTransition(com.makentoshe.androidgithubcitemplate.R.anim.slidein2, com.makentoshe.androidgithubcitemplate.R.anim.slideout2)
+                        overridePendingTransition(
+                            com.makentoshe.androidgithubcitemplate.R.anim.slidein2,
+                            com.makentoshe.androidgithubcitemplate.R.anim.slideout2
+                        )
                         finish()
                         true
                     }
                     com.makentoshe.androidgithubcitemplate.R.id.StatsButton -> {
                         intent = Intent(this, StatsActivity::class.java)
                         startActivity(intent)
-                        overridePendingTransition(com.makentoshe.androidgithubcitemplate.R.anim.slidein2, com.makentoshe.androidgithubcitemplate.R.anim.slideout2)
+                        overridePendingTransition(
+                            com.makentoshe.androidgithubcitemplate.R.anim.slidein2,
+                            com.makentoshe.androidgithubcitemplate.R.anim.slideout2
+                        )
                         finish()
 
                         true
@@ -50,7 +56,23 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(com.makentoshe.androidgithubcitemplate.R.layout.activity_settings)
         bottom_navigation.selectedItemId = com.makentoshe.androidgithubcitemplate.R.id.ProfileButton
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        val switch : Switch = findViewById(R.id.switch_1)
+
+        if (switch != null) {
+            switch.setOnCheckedChangeListener(this);
+        }
     }
+
+    override fun onCheckedChanged(buttonView: CompoundButton? , isChecked: Boolean ) {
+        Toast.makeText(this, "The Switch is " + (if (isChecked) "on" else "off"), Toast.LENGTH_SHORT).show()
+        if(isChecked) {
+            //do stuff when Switch is ON
+        } else {
+            //do stuff when Switch if OFF
+        }
+    }
+
 
     override fun onSupportNavigateUp(): Boolean {
         intent = Intent(this, MainActivity::class.java)

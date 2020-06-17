@@ -12,6 +12,22 @@
     <color name="colorOnSurface">#000000</color>
     <color name="InactiveBottomNavIconColor">#91E4FB</color>
     <color name="BottomNavBarColor">#EEEEEE</color>
+
+    <!-- Dark Theme -->
+
+    <color name="colorPrimary_Dark">#F32121</color>
+    <color name="colorPrimaryDark_Dark">#8C6445</color>
+    <color name="colorAccent_Dark">#FBE491</color>
+    <color name="windowBackground_Dark">#FEFEFE</color>
+    <color name="textColorPrimary_Dark">#000000</color>
+
+    <color name="buttonBackground_Dark">#EEEEEE</color>
+    <color name="textColor_Dark">#000000</color>
+    <color name="textColorSecondary_Dark">#666666</color>
+    <color name="colorOnSurface_Dark">#000000</color>
+    <color name="InactiveBottomNavIconColor_Dark">#ADFB91</color>
+    <color name="BottomNavBarColor_Dark">#EEEEEE</color>
+
     <!--<color name="colorIcons">#6bbaff<!-#9ed2ff#91E4FB--><!--></color>
     <color name="colorSelected">#9ed2ff</color>
     <color name="actionbar_background">#6BBAFF</color>
