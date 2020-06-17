@@ -1,16 +1,18 @@
-package com.makentoshe.androidgithubcitemplate
+package com.makentoshe.androidgithubcitemplate.items
 
 import android.graphics.Color
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.makentoshe.androidgithubcitemplate.R
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.rating_layout.*
 
 class RatingItem(private val rating: Rating) : Item() {
-    override fun getLayout() = R.layout.rating_layout
+    override fun getLayout() =
+        R.layout.rating_layout
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         var solved_today = rating.SolvedToday

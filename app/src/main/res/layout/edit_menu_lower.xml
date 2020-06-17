@@ -13,7 +13,7 @@
             android:id="@+id/SetColor"
             android:layout_width="48dp"
             android:layout_height="48dp"
-
+            android:clickable="true"
             android:background="?attr/selectableItemBackground"
             android:enabled="true"
             android:src="@drawable/appearance_icon"
@@ -24,7 +24,7 @@
             android:id="@+id/SetAlarm"
             android:layout_width="48dp"
             android:layout_height="48dp"
-
+            android:clickable="true"
             android:background="?attr/selectableItemBackground"
             android:enabled="true"
             android:src="@drawable/newalarm_icon"
@@ -37,6 +37,7 @@
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackground"
             android:enabled="true"
+            android:clickable="true"
             android:src="@drawable/listadd_icon"
             android:tint="@color/colorPrimary"
             android:title="Create list" />
@@ -49,6 +50,7 @@
             android:enabled="true"
             android:src="@drawable/addattachment_icon"
             android:tint="@color/colorPrimary"
+            android:clickable="true"
             android:title="Add attachment" />
 
         <ImageButton
@@ -57,9 +59,12 @@
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackground"
             android:enabled="true"
+            android:clickable="true"
+            android:onClick="pinToggle"
             android:src="@drawable/pin_icon"
             android:tint="@color/colorPrimary"
-            android:title="Pin task" />
+            android:title="Pin task"
+            android:focusable="true" />
     </LinearLayout>
 </FrameLayout>
 
