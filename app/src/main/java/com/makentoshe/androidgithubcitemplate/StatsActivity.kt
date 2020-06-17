@@ -1,8 +1,11 @@
 package com.makentoshe.androidgithubcitemplate
 
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.LineChart
@@ -12,9 +15,21 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class StatsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val arguments = intent.extras
+
+        if (arguments?.getBoolean("themeCount") == true) {
+
+            Toast.makeText(this@StatsActivity, "PENIS", Toast.LENGTH_SHORT).show()
+            setTheme(com.makentoshe.androidgithubcitemplate.R.style.AppTheme_Dark)
+            recreate()
+            Log.v("COCK","BALL")
+
+        }
+
         super.onCreate(savedInstanceState)
         val actionBar = supportActionBar
         actionBar?.title = "Statistics"
