@@ -33,6 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:fontFamily="@font/font_poppins"
                 android:id="@+id/text_archive"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -77,6 +78,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:fontFamily="@font/font_poppins"
                 android:id="@+id/text_appearance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -156,6 +158,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:fontFamily="@font/font_poppins"
                 android:id="@+id/text_help"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
