@@ -19,17 +19,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class StatsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val arguments = intent.extras
-
-        if (arguments?.getBoolean("themeCount") == true) {
-
-            Toast.makeText(this@StatsActivity, "PENIS", Toast.LENGTH_SHORT).show()
-            setTheme(com.makentoshe.androidgithubcitemplate.R.style.AppTheme_Dark)
-            recreate()
-            Log.v("COCK","BALL")
-
-        }
-
         super.onCreate(savedInstanceState)
         val actionBar = supportActionBar
         actionBar?.title = "Statistics"

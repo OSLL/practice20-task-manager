@@ -21,15 +21,11 @@ class SettingsActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeList
 
             val theme: Resources.Theme = super.getTheme()
             theme.applyStyle(com.makentoshe.androidgithubcitemplate.R.style.AppTheme_Dark, true)
-            intent = Intent(this, SettingsActivity::class.java)
-            intent.putExtra("themeCount", true)
 
         } else {
 
             val theme: Resources.Theme = super.getTheme()
             theme.applyStyle(com.makentoshe.androidgithubcitemplate.R.style.AppTheme, true)
-            intent = Intent(this, SettingsActivity::class.java)
-            intent.putExtra("themeCount", false)
 
         }
 

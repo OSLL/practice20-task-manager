@@ -13,12 +13,6 @@ class RatingItem(private val rating: Rating) : Item() {
     override fun getLayout() = R.layout.rating_layout
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        var solved_today = rating.SolvedToday
-        var solved_today_pivo: String = "Solved today: " + solved_today.toString()
-        viewHolder.text_solved.text = solved_today_pivo
-        var rejected_today = rating.RejectedToday
-        var rejected_today_pivo: String = "Rejected today: " + rejected_today.toString()
-        viewHolder.text_rejected.text = rejected_today_pivo
         var piechart: PieChart = viewHolder.rating_chart
         var pievalues: ArrayList<PieEntry> = ArrayList(0)
         pievalues.add(0, PieEntry((100 - rating.Rating).toFloat(), ""))
