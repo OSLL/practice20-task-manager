@@ -25,7 +25,7 @@
 
     <!-- Dark Theme -->
 
-    <style name="AppTheme_Dark">
+    <style name="AppTheme_Dark" parent="AppTheme">
         <item name="colorAccent">@color/colorAccent_Dark</item>
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
         <item name="colorPrimary">@color/colorPrimary_Dark</item>
