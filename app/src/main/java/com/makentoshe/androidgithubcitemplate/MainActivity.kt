@@ -87,10 +87,7 @@ class MainActivity : AppCompatActivity() {
             finish()
             //Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
         }
-        floating_action_button2.setOnClickListener {
-            updateAdapter(groupAdapter)
 
-        }
     }
     private fun attachSwipeCallback(
         recyclerView: RecyclerView,
