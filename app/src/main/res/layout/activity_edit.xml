@@ -83,16 +83,62 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             app:backgroundTint="@color/buttonBackground"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="16dp">
+            app:layout_constraintBottom_toBottomOf="parent">
 
-            <include
-                layout="@layout/edit_menu_lower"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/bottom_navigation">
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/SetColor"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:enabled="true"
+                    android:src="@drawable/bookmark_icon"
+                    android:tint="@color/textColorSecondary"
+                    android:title="Set color"/>
 
-            </include>
+                <ImageButton
+                    android:id="@+id/SetAlarm"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:enabled="true"
+                    android:src="@drawable/newalarm_icon"
+                    android:tint="@color/textColorSecondary"
+                    android:title="Set alarm" />
+
+                <!--<ImageButton
+                    android:id="@+id/SetList"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:enabled="true"
+                    android:onClick="listToggle"
+                    android:src="@drawable/listadd_icon"
+                    android:tint="@color/textColorSecondary"
+                    android:title="Create list" />-->
+
+                <ImageButton
+                    android:id="@+id/SetAttachment"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:enabled="true"
+                    android:src="@drawable/addattachment_icon"
+                    android:tint="@color/textColorSecondary"
+                    android:title="Add attachment" />
+
+                <ImageButton
+                    android:id="@+id/Pin"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:enabled="true"
+                    android:src="@drawable/pin_icon"
+                    android:tint="@color/textColorSecondary"
+                    android:title="Pin task" />
+            </LinearLayout>
 
 
         </com.google.android.material.bottomappbar.BottomAppBar>

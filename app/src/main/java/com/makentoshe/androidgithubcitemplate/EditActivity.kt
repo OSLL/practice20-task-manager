@@ -1,14 +1,20 @@
 package com.makentoshe.androidgithubcitemplate
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.toColor
+import androidx.core.widget.ImageViewCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.makentoshe.androidgithubcitemplate.items.Task
@@ -18,19 +24,19 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_edit.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.note_layout.*
+import kotlin.math.PI
 
 class EditActivity : AppCompatActivity() {
-    var Title: String = ""
-    var Text: String = ""
-    var Date: Long = 0
-    var Image: String = ""
-    var Pin: Boolean = false
-    var Bookmark: Int = 0
-
+    var tTitle: String = ""
+    var tText: String = ""
+    var tDate: Long = 0
+    var tImage: String = ""
+    var tPin: Boolean = false
+    var tBookmark: Int = 0
     var isOpen = false
     var isPinned = false
-    //fun pinToggle()
-    fun addItem(isPinned: Boolean) {
+
+    fun addItem() {
         var db = TaskDatabase.getDatabase(application)
         var taskDao = db.taskDao()
         var task = Task()
@@ -39,6 +45,7 @@ class EditActivity : AppCompatActivity() {
             task.text=textField.text.toString()
             task.date=1//TODO
             task.image="a"//TODO
+            Log.v("PinStatusAdd",isPinned.toString())
             task.pin=isPinned
             task.bookmark=1//TODO
             taskDao.insert(task)
@@ -53,6 +60,12 @@ class EditActivity : AppCompatActivity() {
         actionBar?.setDisplayHomeAsUpEnabled(true)
         setContentView(R.layout.activity_edit)
 
+        Pin.setOnClickListener{
+            isPinned = !isPinned
+            if (isPinned) ImageViewCompat.setImageTintList(Pin, ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.colorPrimary))) else
+                ImageViewCompat.setImageTintList(Pin, ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.textColorSecondary)))
+            Log.v("PinStatus",isPinned.toString())
+        }
         // titlenote.addTextChangedListener(object: TextWatcher{
         //override fun afterTextChanged(s: Editable) {
         //    if (s.filter {char-> char.isDigit()}.isNotEmpty()) {
@@ -104,8 +117,20 @@ class EditActivity : AppCompatActivity() {
         }
 
     }
-
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.Undo ->{
+                Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
+            }
+            R.id.Redo ->{
+                Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
+            }
+            R.id.Delete ->{
+                Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.edit_menu_upper, menu)
@@ -113,14 +138,14 @@ class EditActivity : AppCompatActivity() {
     }
 
         override fun onSupportNavigateUp(): Boolean {
-        addItem(isPinned)
+        addItem()
         intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
         return true
     }
     override fun onBackPressed() {
-        addItem(isPinned)
+        addItem()
         intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
