@@ -1,4 +1,4 @@
-package com.makentoshe.androidgithubcitemplate
+package com.makentoshe.androidgithubcitemplate.items
 
 class Rating(
     var Rating: Int = 100,

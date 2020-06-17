@@ -14,7 +14,6 @@ import com.xwray.groupie.ViewHolder
 class SwipeCallback(adapter: GroupAdapter<ViewHolder>, application: Application) :
     ItemTouchHelper.SimpleCallback(0,0) {
     val app = application
-
     private fun removeItem(pos: Int, adapter: GroupAdapter<ViewHolder>) {
     }
     private val mAdapter: GroupAdapter<ViewHolder> = adapter

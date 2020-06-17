@@ -12,18 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.makentoshe.androidgithubcitemplate.items.*
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.Section
 import com.xwray.groupie.ViewHolder
-import com.xwray.groupie.groupiex.plusAssign
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.bottom_navigation
 
-val INSET_TYPE_KEY = "inset_type"
-val INSET = "inset"
 
 class MainActivity : AppCompatActivity() {
     var groupAdapter = GroupAdapter<ViewHolder>()
-    var section = Section()
     fun updateAdapter(groupAdapter: GroupAdapter<ViewHolder>) {
         var db = TaskDatabase.getDatabase(application)
         var taskDao = db.taskDao()
@@ -42,10 +37,6 @@ class MainActivity : AppCompatActivity() {
             adapter = groupAdapter
             attachSwipeCallback(main_recycler_view, adapter as GroupAdapter<ViewHolder>)
         }
-        /*for (i in 0..2) {
-            section += (SwipeToDeleteItem(Task()))
-        }
-        groupAdapter += section*/
         //genTask(taskDao)
         //taskDao.deleteAll()
         //Log.v("Taskdao size", taskDao.getCount().toString())
