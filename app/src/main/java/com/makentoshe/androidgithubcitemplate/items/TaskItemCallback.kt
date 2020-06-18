@@ -1,17 +1,17 @@
 package com.makentoshe.androidgithubcitemplate.items
 
 import android.app.Application
-import android.util.Log
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.makentoshe.androidgithubcitemplate.MainActivity
-import com.makentoshe.androidgithubcitemplate.items.TaskDao
-import com.makentoshe.androidgithubcitemplate.items.TaskDatabase
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 
 interface AppCallback {
-    fun updateAdapter(groupAdapter: GroupAdapter<ViewHolder>, db: TaskDatabase, deleteId: Long = -1){
+    fun updateAdapter(
+        groupAdapter: GroupAdapter<ViewHolder>,
+        db: TaskDatabase,
+        deleteId: Long = -1
+    ) {
     }
 
     class SwipeCallback(
@@ -22,7 +22,7 @@ interface AppCallback {
     ) : AppCallback,
         ItemTouchHelper.SimpleCallback(0, 0) {
         val app = application
-        private fun removeItem (pos: Int, adapter: GroupAdapter<ViewHolder>) {
+        private fun removeItem(pos: Int, adapter: GroupAdapter<ViewHolder>) {
         }
 
         private val mAdapter: GroupAdapter<ViewHolder> = adapter
@@ -38,7 +38,7 @@ interface AppCallback {
         }
 
         private fun createDragFlags(pos: Int): Int {
-            return if (pos == 0) 0 else ItemTouchHelper.UP or ItemTouchHelper.DOWN
+            return /*if (pos == 0)*/ 0 //else ItemTouchHelper.UP or ItemTouchHelper.DOWN
         }
 
         private fun createSwipeFlags(pos: Int): Int {
@@ -53,11 +53,12 @@ interface AppCallback {
         ): Boolean {
             return false
         }
+
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             var taskDao = db.taskDao()
-            val position: Long = taskDao.getAll()[0].id-1+viewHolder.adapterPosition.toLong()
-            Log.v("Clr", position.toString())
-            appCallback.updateAdapter(mAdapter, db, position)
+            val positions: List<Int> = taskDao.getAll().map { it.id }
+            val pos = positions[viewHolder.adapterPosition - 1].toLong()
+            appCallback.updateAdapter(mAdapter, db, pos)
         }
 
     }

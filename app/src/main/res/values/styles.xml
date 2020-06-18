@@ -4,7 +4,10 @@
         <item name="background">@color/colorActionBar</item>
     </style>
 
-    <!-- Default Theme -->
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorControlNormal">@color/windowBackground</item>
+    </style>
 
     <style name="AppTheme" parent="Theme.MaterialComponents">
         <item name="actionBarStyle">@style/MyActionBar</item>

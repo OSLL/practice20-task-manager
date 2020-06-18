@@ -1,19 +1,19 @@
 package com.makentoshe.androidgithubcitemplate.items
 
-import com.xwray.groupie.Item
-import com.xwray.groupie.OnItemClickListener
-import com.xwray.groupie.OnItemLongClickListener
-
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.xwray.groupie.Item
+import com.xwray.groupie.OnItemClickListener
+import com.xwray.groupie.OnItemLongClickListener
 
 open class GroupieViewHolder(rootView: View) : RecyclerView.ViewHolder(rootView) {
 
     private var _item: Item<*>? = null
 
     val item: Item<*>
-        get() = _item ?: throw IllegalStateException("Attempting to get Item from GroupieViewHolder but it's not yet set")
+        get() = _item
+            ?: throw IllegalStateException("Attempting to get Item from GroupieViewHolder but it's not yet set")
 
     val extras: Map<String, Any>
         get() = item.extras
@@ -27,9 +27,11 @@ open class GroupieViewHolder(rootView: View) : RecyclerView.ViewHolder(rootView)
     val root: View
         get() = itemView
 
-    fun bind(item: Item<*>,
-             onItemClickListener: OnItemClickListener? = null,
-             onItemLongClickListener: OnItemLongClickListener? = null) {
+    fun bind(
+        item: Item<*>,
+        onItemClickListener: OnItemClickListener? = null,
+        onItemLongClickListener: OnItemLongClickListener? = null
+    ) {
         this._item = item
 
         // Only set the top-level click listeners if a) they exist, and b) the _item has

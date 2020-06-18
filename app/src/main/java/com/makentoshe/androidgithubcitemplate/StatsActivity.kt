@@ -1,11 +1,8 @@
 package com.makentoshe.androidgithubcitemplate
 
 import android.content.Intent
-import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.LineChart
