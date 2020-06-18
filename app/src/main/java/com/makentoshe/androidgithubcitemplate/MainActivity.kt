@@ -1,8 +1,15 @@
 package com.makentoshe.androidgithubcitemplate
 
+import android.app.Notification
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -88,6 +95,31 @@ class MainActivity : AppCompatActivity(), AppCallback {
             finish()
             //Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
         }
+
+        // Create PendingIntent
+        val resultIntent = Intent(this, MainActivity::class.java)
+        val resultPendingIntent = PendingIntent.getActivity(
+            this, 0, resultIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+
+        // Create Notification
+        val builder =
+            NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.motiontask_icon_white)
+                .setContentTitle("Placeholder")
+                .setContentText("Note expires in 30 minutes")
+                .setContentIntent(resultPendingIntent)
+                .setWhen(System.currentTimeMillis()+30000)
+                .setUsesChronometer(true)
+        val notification = builder.build()
+
+        // Show Notification
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify(1, notification)
 
     }
 

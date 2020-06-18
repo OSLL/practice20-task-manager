@@ -44,6 +44,7 @@
 
 
                         <TextView
+                            android:fontFamily="@font/font_poppins"
                             android:id="@+id/task"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -97,6 +98,7 @@
 
 
                         <TextView
+                            android:fontFamily="@font/font_poppins"
                             android:id="@+id/month"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

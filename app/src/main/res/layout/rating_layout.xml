@@ -12,16 +12,16 @@
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/rating_chart"
-            android:layout_width="135dp"
-            android:layout_height="135dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:fontFamily="@font/font_poppins"
             android:id="@+id/solved"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,6 +34,7 @@
             app:layout_constraintVertical_bias="0.35" />
 
         <TextView
+            android:fontFamily="@font/font_poppins"
             android:id="@+id/solved_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,6 +48,7 @@
             app:layout_constraintVertical_bias="0" />
 
         <TextView
+            android:fontFamily="@font/font_poppins"
             android:id="@+id/rejected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,6 +61,7 @@
             app:layout_constraintVertical_bias="0.35" />
 
         <TextView
+            android:fontFamily="@font/font_poppins"
             android:id="@+id/rejected_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
