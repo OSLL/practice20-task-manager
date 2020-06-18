@@ -8,7 +8,6 @@ import android.content.Intent
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -23,29 +22,38 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), AppCallback {
     var groupAdapter = GroupAdapter<ViewHolder>()
-    override fun updateAdapter(groupAdapter: GroupAdapter<ViewHolder>, db: TaskDatabase, deleteId: Long) {
+    override fun updateAdapter(
+        groupAdapter: GroupAdapter<ViewHolder>,
+        db: TaskDatabase,
+        deleteId: Long
+    ) {
         var taskDao = db.taskDao()
         groupAdapter.clear()
         groupAdapter
             .add(
-            RatingItem(
-                Rating(
-                    Rating = 34
+                RatingItem(
+                    Rating(
+                        Rating = 34
+                    )
                 )
             )
-        )
         if (deleteId > -1) taskDao.deleteById(deleteId)
-        taskDao.getAll().map { Log.v("Add", it.id.toString()) }
         groupAdapter.addAll(taskDao.getAll().map { TaskItem(it) })
         main_recycler_view.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = groupAdapter
-            attachSwipeCallback(this@MainActivity,main_recycler_view, adapter as GroupAdapter<ViewHolder>, db)
+            attachSwipeCallback(
+                this@MainActivity,
+                main_recycler_view,
+                adapter as GroupAdapter<ViewHolder>,
+                db
+            )
         }
         //genTask(taskDao)
         //taskDao.deleteAll()
         //Log.v("Taskdao size", taskDao.getCount().toString())
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         var db = TaskDatabase.getDatabase(application)
         super.onCreate(savedInstanceState)
@@ -122,26 +130,10 @@ class MainActivity : AppCompatActivity(), AppCallback {
         mAdapter: GroupAdapter<ViewHolder> = groupAdapter,
         db: TaskDatabase
     ) {
-        val itemTouchHelper = ItemTouchHelper(AppCallback.SwipeCallback(appCallback,groupAdapter, application, db))
+        val itemTouchHelper =
+            ItemTouchHelper(AppCallback.SwipeCallback(appCallback, groupAdapter, application, db))
         itemTouchHelper.attachToRecyclerView(recyclerView)
     }
-    private fun newEntry(taskDao: TaskDao) {
-        val titlestr = (1..100000).random().toString()
-        val textstr = (1..100000000000000).random().toString()
-        val task = Task()
-        task.title = titlestr
-        task.text = textstr
-        task.pin = true
-        task.date = System.currentTimeMillis() + 100000
-        task.bookmark = 1
-        task.image = "a"
-        taskDao.insert(task)
-        taskDao.update(task)
-    }
-    private fun genTask(taskDao: TaskDao){
-        newEntry(taskDao)
-    }
-
 }
 
 

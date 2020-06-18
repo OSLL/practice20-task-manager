@@ -1,6 +1,5 @@
 package com.makentoshe.androidgithubcitemplate
 
-import android.R
 import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
@@ -17,7 +16,7 @@ class SettingsActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeList
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        if (AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES) {
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
 
             val theme: Resources.Theme = super.getTheme()
             theme.applyStyle(com.makentoshe.androidgithubcitemplate.R.style.AppTheme_Dark, true)
@@ -72,13 +71,17 @@ class SettingsActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeList
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         var myswitch = findViewById<Switch>(com.makentoshe.androidgithubcitemplate.R.id.switch_1)
-        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             myswitch.isChecked = true
         }
 
-        myswitch.setOnCheckedChangeListener(object: CompoundButton.OnCheckedChangeListener {
+        myswitch.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
             override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
-                Toast.makeText(this@SettingsActivity, "The Switch is " + (if (isChecked) "on" else "off"), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@SettingsActivity,
+                    "The Switch is " + (if (isChecked) "on" else "off"),
+                    Toast.LENGTH_SHORT
+                ).show()
                 if (isChecked) {
                     //do stuff when Switch is ON
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -95,7 +98,10 @@ class SettingsActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeList
     override fun onSupportNavigateUp(): Boolean {
         intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        overridePendingTransition(com.makentoshe.androidgithubcitemplate.R.anim.slidein2, com.makentoshe.androidgithubcitemplate.R.anim.slideout2)
+        overridePendingTransition(
+            com.makentoshe.androidgithubcitemplate.R.anim.slidein2,
+            com.makentoshe.androidgithubcitemplate.R.anim.slideout2
+        )
         finish()
         return true
     }
@@ -103,7 +109,10 @@ class SettingsActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeList
     override fun onBackPressed() {
         intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        overridePendingTransition(com.makentoshe.androidgithubcitemplate.R.anim.slidein2, com.makentoshe.androidgithubcitemplate.R.anim.slideout2)
+        overridePendingTransition(
+            com.makentoshe.androidgithubcitemplate.R.anim.slidein2,
+            com.makentoshe.androidgithubcitemplate.R.anim.slideout2
+        )
         finish()
     }
 

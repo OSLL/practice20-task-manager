@@ -2,7 +2,7 @@ package com.makentoshe.androidgithubcitemplate.items
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.sql.Date
+
 @Entity
 data class Task(
     @PrimaryKey(autoGenerate = true)
