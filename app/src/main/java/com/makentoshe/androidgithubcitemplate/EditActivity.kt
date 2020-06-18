@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -113,8 +114,13 @@ class EditActivity : AppCompatActivity() {
         SetAlarm.setOnClickListener {
             if (isAlarmOpen) {
                 DateTimeLayout.startAnimation(close)
+                DateTimeLayout.visibility = View.GONE
                 SetDate.text = "DATE"
                 SetTime.text = "TIME"
+                SetDate.isEnabled = false
+                SetTime.isEnabled = false
+                SetTimeDone.isEnabled = false
+                SetTimeCancel.isEnabled = false
                 SetTime.strokeColor = ColorStateList.valueOf(
                     ContextCompat.getColor(
                         applicationContext,
@@ -129,7 +135,13 @@ class EditActivity : AppCompatActivity() {
                 )
                 isAlarmOpen = !isAlarmOpen
             } else {
+
                 DateTimeLayout.startAnimation(open)
+                DateTimeLayout.visibility = View.VISIBLE
+                SetDate.isEnabled = true
+                SetTime.isEnabled = true
+                SetTimeDone.isEnabled = true
+                SetTimeCancel.isEnabled = true
                 isAlarmOpen = !isAlarmOpen
             }
             val d =
@@ -139,7 +151,7 @@ class EditActivity : AppCompatActivity() {
                     dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth)
                     var text: String = ""
                     text =
-                        text + dateAndTime[Calendar.DAY_OF_MONTH].toString() + " " + dateAndTime[Calendar.MONTH].toString() + " " + dateAndTime[Calendar.YEAR].toString()
+                        text + dateAndTime[Calendar.DAY_OF_MONTH].toString() + "." + dateAndTime[Calendar.MONTH].toString() + "." + dateAndTime[Calendar.YEAR].toString()
                     SetDate.text = text
                     SetDate.strokeColor = ColorStateList.valueOf(
                         ContextCompat.getColor(
@@ -163,7 +175,7 @@ class EditActivity : AppCompatActivity() {
                     dateAndTime[Calendar.MINUTE] = minute
                     var text: String = ""
                     text =
-                        text + dateAndTime[Calendar.HOUR_OF_DAY].toString() + ":" + dateAndTime[Calendar.MINUTE].toString()
+                        text + dateAndTime[Calendar.HOUR_OF_DAY].toString() + ":" + if (dateAndTime[Calendar.MINUTE]<10) "0" + dateAndTime[Calendar.MINUTE].toString() else dateAndTime[Calendar.MINUTE].toString()
                     SetTime.text = text
                     SetTime.strokeColor = ColorStateList.valueOf(
                         ContextCompat.getColor(
@@ -183,13 +195,28 @@ class EditActivity : AppCompatActivity() {
             SetTimeDone.setOnClickListener {
                 if (SetDate.text == "DATE") {
                     SetDate.strokeColor = ColorStateList.valueOf(0xFFFF0000.toInt())
-                } else
-                    if (SetTime.text == "TIME") {
+                }
+                if (SetTime.text == "TIME") {
                         SetTime.strokeColor = ColorStateList.valueOf(0xFFFF0000.toInt())
                     }
                 if ((SetDate.text != "DATE") and (SetTime.text != "TIME")) {
+                    DateTimeLayout.visibility = View.GONE
+                    ImageViewCompat.setImageTintList(
+                        SetAlarm,
+                        ColorStateList.valueOf(
+                            ContextCompat.getColor(
+                                applicationContext,
+                                R.color.textColorSecondary
+                            )
+                        )
+                    )
                     date = dateAndTime.timeInMillis
                     DateTimeLayout.startAnimation(close)
+                    DateTimeLayout.visibility = View.GONE
+                    SetDate.isEnabled = false
+                    SetTime.isEnabled = false
+                    SetTimeDone.isEnabled = false
+                    SetTimeCancel.isEnabled = false
                     SetDate.text = "DATE"
                     SetTime.text = "TIME"
                     isAlarmOpen = !isAlarmOpen
@@ -199,6 +226,13 @@ class EditActivity : AppCompatActivity() {
                 DateTimeLayout.startAnimation(close)
                 SetDate.text = "DATE"
                 SetTime.text = "TIME"
+                date = 0
+                SetDate.isEnabled = false
+                SetTime.isEnabled = false
+                SetTimeDone.isEnabled = false
+                SetTimeCancel.isEnabled = false
+                DateTimeLayout.visibility = View.GONE
+                ImageViewCompat.setImageTintList(SetAlarm, ColorStateList.valueOf(ContextCompat.getColor(applicationContext, R.color.textColorSecondary)))
                 SetTime.strokeColor = ColorStateList.valueOf(
                     ContextCompat.getColor(
                         applicationContext,
@@ -246,6 +280,9 @@ class EditActivity : AppCompatActivity() {
                 _2_.startAnimation(fabClose)
                 _3_.startAnimation(fabClose)
                 add_button.startAnimation(fabRClockWise)
+                _1_.isEnabled = false
+                _2_.isEnabled = false
+                _3_.isEnabled = false
 
                 isOpen = false
             } else {
@@ -254,9 +291,9 @@ class EditActivity : AppCompatActivity() {
                 _3_.startAnimation(fabOpen)
                 add_button.startAnimation(fabRAntiClockWise)
 
-                _1_.isClickable
-                _2_.isClickable
-                _3_.isClickable
+                _1_.isEnabled = true
+                _2_.isEnabled = true
+                _3_.isEnabled = true
 
                 isOpen = true
 
