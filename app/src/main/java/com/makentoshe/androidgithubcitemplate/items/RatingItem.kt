@@ -2,9 +2,6 @@ package com.makentoshe.androidgithubcitemplate.items
 
 import android.graphics.Color
 import android.graphics.Typeface
-import android.graphics.Typeface.CustomFallbackBuilder
-import android.graphics.fonts.Font
-import android.graphics.fonts.FontFamily
 import android.os.Build
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData

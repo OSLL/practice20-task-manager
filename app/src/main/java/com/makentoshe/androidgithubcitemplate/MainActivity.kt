@@ -1,13 +1,11 @@
 package com.makentoshe.androidgithubcitemplate
 
-import MyAlarm
 import android.app.AlarmManager
 import android.app.Notification
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.media.RingtoneManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
@@ -41,7 +39,7 @@ class MainActivity : AppCompatActivity(), AppCallback {
                 )
             )
         if (deleteId > -1) taskDao.deleteById(deleteId)
-        groupAdapter.addAll(taskDao.getAll().map { TaskItem(it) })
+        groupAdapter.addAll(taskDao.sortedPinned().map { TaskItem(it, this@MainActivity) })
         main_recycler_view.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = groupAdapter
@@ -133,7 +131,8 @@ class MainActivity : AppCompatActivity(), AppCallback {
         }
 
     }
-    private fun sendNot(){
+
+    private fun sendNot() {
         val resultIntent = Intent(this, MainActivity::class.java)
         val resultPendingIntent = PendingIntent.getActivity(
             this, 0, resultIntent,
@@ -146,7 +145,7 @@ class MainActivity : AppCompatActivity(), AppCallback {
                 .setContentTitle("Placeholder")
                 .setContentText("Note expires in 30 minutes")
                 .setContentIntent(resultPendingIntent)
-                .setWhen(System.currentTimeMillis()+30000)
+                .setWhen(System.currentTimeMillis() + 30000)
                 .setUsesChronometer(true)
 
         val notification: Notification = builder.build()

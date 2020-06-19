@@ -1,24 +1,37 @@
 package com.makentoshe.androidgithubcitemplate.items
 
+import android.content.Context
 import android.content.res.ColorStateList
+import android.net.Uri
 import android.util.Log
 import android.view.View
 import androidx.core.widget.ImageViewCompat
+import com.bumptech.glide.Glide
 import com.makentoshe.androidgithubcitemplate.R
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.note_layout.*
 import java.util.*
 
-class TaskItem(private val task: Task) : Item() {
+class TaskItem(private val task: Task, private val context: Context) : Item() {
 
     override fun getLayout() =
         R.layout.note_layout
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.apply {
+            Log.v("task.title", "s:" + task.title)
+            if (task.title == null) if ((task.bookmark == 0) and (task.date.equals(0)) and (!task.pin)) {
+                iconcontainer.visibility = View.GONE
+                Log.v("task.bookmark", task.bookmark.toString())
+                Log.v("task.date",task.date.toString())
+                Log.v("task.pin", task.pin.toString())
+            }  else {
+                note_title.visibility = View.VISIBLE
+
+            }
             note_title.text = task.title
-            if (task.text != "") note_text.visibility = View.VISIBLE
+            if (task.text != null) note_text.visibility = View.VISIBLE
             note_text.text = task.text
             if (task.date > 0) {
                 alarm_icon.visibility = View.VISIBLE
@@ -49,7 +62,13 @@ class TaskItem(private val task: Task) : Item() {
 
             }
             if (task.pin) pin_icon.visibility = View.VISIBLE
-            if (task.image != "") note_image.visibility = View.VISIBLE
+            if (task.image != "") {
+                note_image.visibility = View.VISIBLE
+                Glide
+                    .with(context)
+                    .load(Uri.parse(task.image))
+                    .into(note_image)
+            }
             if (task.bookmark != 0) {
                 bookmark_icon.visibility = View.VISIBLE
                 Log.v("ColorStatusBind", task.bookmark.toString())

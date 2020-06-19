@@ -12,7 +12,7 @@ class MyAlarm : BroadcastReceiver {
     private val REMINDER_BUNDLE = "MyReminderBundle"
 
     // this constructor is called by the alarm manager.
-    constructor() {}
+    constructor()
 
     // you can use this constructor to create the alarm.
     //  Just pass in the main activity as the context,

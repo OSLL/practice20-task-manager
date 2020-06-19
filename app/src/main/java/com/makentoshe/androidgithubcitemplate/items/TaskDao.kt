@@ -17,6 +17,9 @@ interface TaskDao {
     @Update
     fun update(employee: Task)
 
+    @Query("SELECT * FROM Task ORDER BY pin DESC")
+    fun sortedPinned(): List<Task>
+
     @Query("DELETE FROM Task WHERE id = :id")
     fun deleteById(id: Long)
 
