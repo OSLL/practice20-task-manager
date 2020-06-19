@@ -59,7 +59,7 @@ interface AppCallback {
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             var taskDao = db.taskDao()
-            val positions: List<Int> = taskDao.getAll().map { it.id }
+            val positions: List<Int> = taskDao.sortedPinned().map { it.id }
             val pos = positions[viewHolder.adapterPosition - 1].toLong()
             appCallback.updateAdapter(mAdapter, db, pos, pref)
         }
