@@ -81,11 +81,6 @@ class SettingsActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeList
 
         myswitch.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
             override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
-                Toast.makeText(
-                    this@SettingsActivity,
-                    "The Switch is " + (if (isChecked) "on" else "off"),
-                    Toast.LENGTH_SHORT
-                ).show()
                 if (isChecked) {
                     //do stuff when Switch is ON
                     editor.putBoolean("switch", true); // Storing boolean - true/false

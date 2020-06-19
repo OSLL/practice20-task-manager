@@ -1,10 +1,17 @@
 package com.makentoshe.androidgithubcitemplate.items
 
 import android.content.SharedPreferences
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.util.*
 
-class Rating(
-    var Rating: Int = 100,
+@Entity
+class Rating constructor(
+    var Rating: Int = 50,
     var SolvedToday: Int = 0,
     var RejectedToday: Int = 0,
-    var pref: SharedPreferences
-) : TaskNote
+    var pref: SharedPreferences,
+    @PrimaryKey
+    var id: Long
+) : TaskNote {
+}

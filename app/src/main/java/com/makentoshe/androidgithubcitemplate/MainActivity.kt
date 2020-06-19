@@ -8,8 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Resources
-import android.media.RingtoneManager
-import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
@@ -29,18 +27,26 @@ class MainActivity : AppCompatActivity(), AppCallback {
     override fun updateAdapter(
         groupAdapter: GroupAdapter<ViewHolder>,
         db: TaskDatabase,
+        rdb: RatingDatabase,
         deleteId: Long,
         pref: SharedPreferences
     ) {
         sendNot()
         var taskDao = db.taskDao()
         groupAdapter.clear()
+        val cal = Calendar.getInstance()
+        val year = cal[Calendar.YEAR]
+        val month = cal[Calendar.MONTH]
+        val date = cal[Calendar.DATE]
+        cal.clear()
+        cal[year, month] = date
+        val todayMillis2 = cal.timeInMillis
         groupAdapter
             .add(
                 RatingItem(
                     Rating(
                         Rating = 34,
-                    pref = pref)
+                    pref = pref, id = todayMillis2)
                 )
             )
         if (deleteId > -1) taskDao.deleteById(deleteId)
@@ -109,7 +115,7 @@ class MainActivity : AppCompatActivity(), AppCallback {
         }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        updateAdapter(groupAdapter, db, -1, pref)
+        updateAdapter(groupAdapter, db,rdb ,-1, pref)
         val mOnNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
