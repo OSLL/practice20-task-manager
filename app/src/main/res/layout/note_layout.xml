@@ -86,7 +86,6 @@
                 android:lines="1"
 
                 android:text=""
-                android:textColor="@color/textColorPrimary"
 
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -104,7 +103,6 @@
             android:textSize="16sp"
             android:visibility="gone"
             android:text=""
-            android:textColor="@color/textColorSecondary"
             app:layout_constraintBottom_toTopOf="@id/note_image"
             app:layout_constraintEnd_toStartOf="parent"
             app:layout_constraintStart_toStartOf="parent"
