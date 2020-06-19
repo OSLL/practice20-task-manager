@@ -1,12 +1,11 @@
 package com.makentoshe.androidgithubcitemplate
 
+import android.app.AlarmManager
 import android.app.Notification
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.media.RingtoneManager
-import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
@@ -18,6 +17,7 @@ import com.makentoshe.androidgithubcitemplate.items.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 
 class MainActivity : AppCompatActivity(), AppCallback {
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity(), AppCallback {
         db: TaskDatabase,
         deleteId: Long
     ) {
+        sendNot()
         var taskDao = db.taskDao()
         groupAdapter.clear()
         groupAdapter
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity(), AppCallback {
                 )
             )
         if (deleteId > -1) taskDao.deleteById(deleteId)
-        groupAdapter.addAll(taskDao.getAll().map { TaskItem(it) })
+        groupAdapter.addAll(taskDao.sortedPinned().map { TaskItem(it, this@MainActivity) })
         main_recycler_view.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = groupAdapter
@@ -49,9 +50,37 @@ class MainActivity : AppCompatActivity(), AppCallback {
                 db
             )
         }
+
+
+        val alarmMgr =
+            getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(this, MainActivity::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+        val resultPendingIntent = PendingIntent.getActivity(
+            this, 0, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val time: Calendar = Calendar.getInstance()
+        time.setTimeInMillis(System.currentTimeMillis())
+        time.add(Calendar.SECOND, 30)
+        alarmMgr[AlarmManager.RTC_WAKEUP, time.timeInMillis] = pendingIntent
+
         //genTask(taskDao)
         //taskDao.deleteAll()
         //Log.v("Taskdao size", taskDao.getCount().toString())
+        /*val builder =
+            NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.motiontask_icon_white)
+                .setContentTitle("Placeholder")
+                .setContentText("Note expires in 30 minutes")
+                .setContentIntent(resultPendingIntent)
+                .setWhen(System.currentTimeMillis()+30000)
+                .setUsesChronometer(true)
+        val notification = builder.build()
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify(1, notification)*/
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,6 +112,11 @@ class MainActivity : AppCompatActivity(), AppCallback {
                 }
                 false
             }
+        val resultIntent = Intent(this, MainActivity::class.java)
+        val resultPendingIntent = PendingIntent.getActivity(
+            this, 0, resultIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        )
 
 
         supportActionBar?.hide()
@@ -96,33 +130,30 @@ class MainActivity : AppCompatActivity(), AppCallback {
             //Toast.makeText(this, "AAAAAAAAA", Toast.LENGTH_SHORT ).show()
         }
 
-        // Create PendingIntent
+    }
+
+    private fun sendNot() {
         val resultIntent = Intent(this, MainActivity::class.java)
         val resultPendingIntent = PendingIntent.getActivity(
             this, 0, resultIntent,
             PendingIntent.FLAG_UPDATE_CURRENT
         )
 
-        val Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-
-        // Create Notification
         val builder =
             NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.motiontask_icon_white)
                 .setContentTitle("Placeholder")
                 .setContentText("Note expires in 30 minutes")
                 .setContentIntent(resultPendingIntent)
-                .setWhen(System.currentTimeMillis()+30000)
+                .setWhen(System.currentTimeMillis() + 30000)
                 .setUsesChronometer(true)
-        val notification = builder.build()
 
-        // Show Notification
+        val notification: Notification = builder.build()
+
         val notificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.notify(1, notification)
-
     }
-
 
     private fun attachSwipeCallback(
         appCallback: AppCallback,

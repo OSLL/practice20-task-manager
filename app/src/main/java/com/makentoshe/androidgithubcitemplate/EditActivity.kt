@@ -1,21 +1,28 @@
 package com.makentoshe.androidgithubcitemplate
 
+import android.Manifest
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.app.TimePickerDialog
 import android.app.TimePickerDialog.OnTimeSetListener
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
+import com.bumptech.glide.Glide
 import com.makentoshe.androidgithubcitemplate.items.Task
 import com.makentoshe.androidgithubcitemplate.items.TaskDatabase
 import dev.sasikanth.colorsheet.ColorSheet
@@ -24,8 +31,6 @@ import java.util.*
 
 
 class EditActivity : AppCompatActivity() {
-    var tTitle: String = ""
-    var tText: String = ""
     var date: Long = 0
     var tImage: String = ""
     var isPinned = false
@@ -33,13 +38,40 @@ class EditActivity : AppCompatActivity() {
     var dateAndTime: Calendar = Calendar.getInstance()
     var isOpen = false
     var isAlarmOpen = false
+    lateinit var noteImage: ImageView
+    private var REQUEST_CODE_PERMISSION_READ_CONTACTS = 0
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>, grantResults: IntArray
+    ) {
+        when (requestCode) {
+            REQUEST_CODE_PERMISSION_READ_CONTACTS -> {
+                // If request is cancelled, the result arrays are empty.
+                if ((grantResults.isNotEmpty() &&
+                            grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                ) {
+                    // Permission is granted. Continue the action or workflow
+                    // in your app.
+                } else {
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT)
+                }
+                return
+            }
+
+            // Add other 'when' lines to check for other
+            // permissions this app might request.
+            else -> {
+                // Ignore all other requests.
+            }
+        }
+    }
 
     fun addItem() {
         var db = TaskDatabase.getDatabase(application)
         var taskDao = db.taskDao()
         var task = Task()
-        if (editTitle.text.toString().equals("") and textField.text.toString().equals("")) else {
+        if ((editTitle.text.toString() == "") and (textField.text.toString() == "")) else {
             task.title = editTitle.text.toString()
             task.text = textField.text.toString()
             task.date = date
@@ -59,6 +91,7 @@ class EditActivity : AppCompatActivity() {
         actionBar?.setBackgroundDrawable(ColorDrawable(0xff6bbaff.toInt()))
         actionBar?.setDisplayHomeAsUpEnabled(true)
         setContentView(R.layout.activity_edit)
+        noteImage = findViewById(R.id.imageField)
         val colors: IntArray = IntArray(5)
         colors[0] = 0xffff8585.toInt()
         colors[1] = 0xffffeca8.toInt()
@@ -66,7 +99,6 @@ class EditActivity : AppCompatActivity() {
         colors[3] = 0xffa8fcff.toInt()
         colors[4] = 0xffe8a8ff.toInt()
         ColorSheet().cornerRadius(10)
-
         Pin.setOnClickListener {
             isPinned = !isPinned
             if (isPinned) ImageViewCompat.setImageTintList(
@@ -88,6 +120,57 @@ class EditActivity : AppCompatActivity() {
                     )
                 )
             Log.v("PinStatus", isPinned.toString())
+        }
+
+        SetAttachment.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                when {
+                    ContextCompat.checkSelfPermission(
+                        applicationContext,
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+                    ) == PackageManager.PERMISSION_GRANTED -> {
+                        var camImagesIntent = Intent(Intent.ACTION_GET_CONTENT)
+                        camImagesIntent.type = "image/*"
+                        camImagesIntent.action = Intent.ACTION_GET_CONTENT
+                        startActivityForResult(
+                            Intent.createChooser(
+                                camImagesIntent,
+                                "Select Picture"
+                            ), 1
+
+                        )
+
+                    }
+
+                    shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE) -> {
+                        // In an educational UI, explain to the user why your app requires this
+                        // permission for a specific feature to behave as expected. In this UI,
+                        // include a "cancel" or "no thanks" button that allows the user to
+                        // continue using your app without granting the permission.
+                    }
+                    else -> {
+                        // You can directly ask for the permission.
+                        requestPermissions(
+                            Array<String>(1) { Manifest.permission.READ_EXTERNAL_STORAGE },
+                            REQUEST_CODE_PERMISSION_READ_CONTACTS
+                        )
+                        Toast.makeText(this, "Permission granted!", Toast.LENGTH_SHORT)
+                    }
+                }
+
+            } else {
+                var camImagesIntent = Intent(Intent.ACTION_GET_CONTENT)
+                camImagesIntent.type = "image/*"
+                camImagesIntent.action = Intent.ACTION_GET_CONTENT
+                startActivityForResult(
+                    Intent.createChooser(
+                        camImagesIntent,
+                        "Select Picture"
+                    ), 1
+
+                )
+                }
+
         }
         // titlenote.addTextChangedListener(object: TextWatcher{
         //override fun afterTextChanged(s: Editable) {
@@ -113,8 +196,13 @@ class EditActivity : AppCompatActivity() {
         SetAlarm.setOnClickListener {
             if (isAlarmOpen) {
                 DateTimeLayout.startAnimation(close)
+                DateTimeLayout.visibility = View.GONE
                 SetDate.text = "DATE"
                 SetTime.text = "TIME"
+                SetDate.isEnabled = false
+                SetTime.isEnabled = false
+                SetTimeDone.isEnabled = false
+                SetTimeCancel.isEnabled = false
                 SetTime.strokeColor = ColorStateList.valueOf(
                     ContextCompat.getColor(
                         applicationContext,
@@ -129,7 +217,13 @@ class EditActivity : AppCompatActivity() {
                 )
                 isAlarmOpen = !isAlarmOpen
             } else {
+
                 DateTimeLayout.startAnimation(open)
+                DateTimeLayout.visibility = View.VISIBLE
+                SetDate.isEnabled = true
+                SetTime.isEnabled = true
+                SetTimeDone.isEnabled = true
+                SetTimeCancel.isEnabled = true
                 isAlarmOpen = !isAlarmOpen
             }
             val d =
@@ -139,7 +233,7 @@ class EditActivity : AppCompatActivity() {
                     dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth)
                     var text: String = ""
                     text =
-                        text + dateAndTime[Calendar.DAY_OF_MONTH].toString() + " " + dateAndTime[Calendar.MONTH].toString() + " " + dateAndTime[Calendar.YEAR].toString()
+                        text + dateAndTime[Calendar.DAY_OF_MONTH].toString() + "." + (dateAndTime[Calendar.MONTH] + 1).toString() + "." + dateAndTime[Calendar.YEAR].toString()
                     SetDate.text = text
                     SetDate.strokeColor = ColorStateList.valueOf(
                         ContextCompat.getColor(
@@ -163,7 +257,7 @@ class EditActivity : AppCompatActivity() {
                     dateAndTime[Calendar.MINUTE] = minute
                     var text: String = ""
                     text =
-                        text + dateAndTime[Calendar.HOUR_OF_DAY].toString() + ":" + dateAndTime[Calendar.MINUTE].toString()
+                        text + dateAndTime[Calendar.HOUR_OF_DAY].toString() + ":" + if (dateAndTime[Calendar.MINUTE] < 10) "0" + dateAndTime[Calendar.MINUTE].toString() else dateAndTime[Calendar.MINUTE].toString()
                     SetTime.text = text
                     SetTime.strokeColor = ColorStateList.valueOf(
                         ContextCompat.getColor(
@@ -181,24 +275,63 @@ class EditActivity : AppCompatActivity() {
                     .show()
             }
             SetTimeDone.setOnClickListener {
+                var currentCal = Calendar.getInstance()
                 if (SetDate.text == "DATE") {
                     SetDate.strokeColor = ColorStateList.valueOf(0xFFFF0000.toInt())
-                } else
-                    if (SetTime.text == "TIME") {
-                        SetTime.strokeColor = ColorStateList.valueOf(0xFFFF0000.toInt())
-                    }
+                }
+                if (SetTime.text == "TIME") {
+                    SetTime.strokeColor = ColorStateList.valueOf(0xFFFF0000.toInt())
+                }
                 if ((SetDate.text != "DATE") and (SetTime.text != "TIME")) {
-                    date = dateAndTime.timeInMillis
-                    DateTimeLayout.startAnimation(close)
-                    SetDate.text = "DATE"
-                    SetTime.text = "TIME"
-                    isAlarmOpen = !isAlarmOpen
+                    if (dateAndTime.timeInMillis < currentCal.timeInMillis) {
+                        if ((dateAndTime[Calendar.DAY_OF_MONTH] < currentCal[Calendar.DAY_OF_MONTH]) or (dateAndTime[Calendar.MONTH] < currentCal[Calendar.MONTH]) or (dateAndTime[Calendar.YEAR] < currentCal[Calendar.YEAR])) {
+                            SetDate.strokeColor = ColorStateList.valueOf(0xFFFF0000.toInt())
+                        } else if (dateAndTime[Calendar.HOUR_OF_DAY] < currentCal[Calendar.MINUTE]) {
+                            SetTime.strokeColor = ColorStateList.valueOf(0xFFFF0000.toInt())
+                        }
+                    } else {
+                        DateTimeLayout.visibility = View.GONE
+                        ImageViewCompat.setImageTintList(
+                            SetAlarm,
+                            ColorStateList.valueOf(
+                                ContextCompat.getColor(
+                                    applicationContext,
+                                    R.color.colorPrimary
+                                )
+                            )
+                        )
+                        date = dateAndTime.timeInMillis
+                        DateTimeLayout.startAnimation(close)
+                        DateTimeLayout.visibility = View.GONE
+                        SetDate.isEnabled = false
+                        SetTime.isEnabled = false
+                        SetTimeDone.isEnabled = false
+                        SetTimeCancel.isEnabled = false
+                        SetDate.text = "DATE"
+                        SetTime.text = "TIME"
+                        isAlarmOpen = !isAlarmOpen
+                    }
                 }
             }
             SetTimeCancel.setOnClickListener {
                 DateTimeLayout.startAnimation(close)
                 SetDate.text = "DATE"
                 SetTime.text = "TIME"
+                date = 0
+                SetDate.isEnabled = false
+                SetTime.isEnabled = false
+                SetTimeDone.isEnabled = false
+                SetTimeCancel.isEnabled = false
+                DateTimeLayout.visibility = View.GONE
+                ImageViewCompat.setImageTintList(
+                    SetAlarm,
+                    ColorStateList.valueOf(
+                        ContextCompat.getColor(
+                            applicationContext,
+                            R.color.textColorSecondary
+                        )
+                    )
+                )
                 SetTime.strokeColor = ColorStateList.valueOf(
                     ContextCompat.getColor(
                         applicationContext,
@@ -246,6 +379,9 @@ class EditActivity : AppCompatActivity() {
                 _2_.startAnimation(fabClose)
                 _3_.startAnimation(fabClose)
                 add_button.startAnimation(fabRClockWise)
+                _1_.isEnabled = false
+                _2_.isEnabled = false
+                _3_.isEnabled = false
 
                 isOpen = false
             } else {
@@ -254,9 +390,9 @@ class EditActivity : AppCompatActivity() {
                 _3_.startAnimation(fabOpen)
                 add_button.startAnimation(fabRAntiClockWise)
 
-                _1_.isClickable
-                _2_.isClickable
-                _3_.isClickable
+                _1_.isEnabled = true
+                _2_.isEnabled = true
+                _3_.isEnabled = true
 
                 isOpen = true
 
@@ -266,6 +402,18 @@ class EditActivity : AppCompatActivity() {
             _3_.setOnClickListener { Toast.makeText(this, "_3_", Toast.LENGTH_SHORT).show() }
         }
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == RESULT_OK && null != data) {
+            tImage = data.data.toString()
+            Glide
+                .with(this)
+                .load(Uri.parse(tImage))
+                .into(noteImage)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -318,6 +466,7 @@ class EditActivity : AppCompatActivity() {
             ImageViewCompat.setImageTintList(SetColor, ColorStateList.valueOf(color))
         }
     }
+
 
     /* fun acceptTheNote(view: View){
          val acceptIntent = Intent(this, MainActivity::class.java)

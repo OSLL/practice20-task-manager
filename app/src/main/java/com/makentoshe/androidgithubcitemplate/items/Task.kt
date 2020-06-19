@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 data class Task(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
-    var title: String = "",
-    var text: String = "",
+    var title: String? = null,
+    var text: String? = null,
     var date: Long = 0,
     var image: String = "",
     var pin: Boolean = false,
