@@ -27,6 +27,7 @@ import com.makentoshe.androidgithubcitemplate.items.Task
 import com.makentoshe.androidgithubcitemplate.items.TaskDatabase
 import dev.sasikanth.colorsheet.ColorSheet
 import kotlinx.android.synthetic.main.activity_edit.*
+import kotlinx.android.synthetic.main.note_layout.*
 import java.util.*
 
 
@@ -171,6 +172,10 @@ class EditActivity : AppCompatActivity() {
                 )
                 }
 
+        }
+        imageField.setOnClickListener{
+            tImage = ""
+            imageField.setImageURI(Uri.parse(""))
         }
         // titlenote.addTextChangedListener(object: TextWatcher{
         //override fun afterTextChanged(s: Editable) {
