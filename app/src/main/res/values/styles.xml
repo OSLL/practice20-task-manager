@@ -1,5 +1,7 @@
 <resources>
 
+    <attr format="reference" name="cardStyle"/>
+
     <style name="MyActionBar" parent="Widget.AppCompat.ActionBar">
         <item name="background">@color/colorActionBar</item>
     </style>
@@ -8,13 +10,23 @@
         <item name="android:windowBackground">@drawable/drawable</item>
     </style>
 
+    <style name="CardViewStyle.Light" parent="CardView">
+        <item name="cardBackgroundColor">@color/windowBackground</item>
+    </style>
+
+    <style name="CardViewStyle.Dark" parent="CardView">
+        <item name="cardBackgroundColor">@color/colorActionBar_Dark</item>
+    </style>
+
     <!-- Default Theme -->
+
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="colorControlNormal">@color/windowBackground</item>
     </style>
 
     <style name="AppTheme" parent="Theme.MaterialComponents">
+        <item name="cardStyle">@style/CardView.Light</item>
         <item name="actionBarStyle">@style/MyActionBar</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
@@ -55,6 +67,7 @@
     </style>
 
     <style name="AppTheme_Dark" parent="Theme.MaterialComponents.DayNight">
+        <item name="cardStyle">@style/CardView.Dark</item>
         <item name="actionBarStyle">@style/MyActionBar_Dark</item>
         <item name="colorAccent">@color/colorAccent_Dark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_Dark</item>
