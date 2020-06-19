@@ -75,6 +75,10 @@ class SettingsActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeList
             myswitch.isChecked = true
         }
 
+        val pref =
+            applicationContext.getSharedPreferences("MyPref", 0) // 0 - for private mode
+        val editor = pref.edit()
+
         myswitch.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
             override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
                 Toast.makeText(
@@ -84,10 +88,14 @@ class SettingsActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeList
                 ).show()
                 if (isChecked) {
                     //do stuff when Switch is ON
+                    editor.putBoolean("switch", true); // Storing boolean - true/false
+                    editor.commit()
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                     recreate()
                 } else {
                     //do stuff when Switch if OFF
+                    editor.putBoolean("switch", false); // Storing boolean - true/false
+                    editor.commit()
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                     recreate()
                 }

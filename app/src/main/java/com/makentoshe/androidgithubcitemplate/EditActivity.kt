@@ -8,6 +8,7 @@ import android.app.TimePickerDialog.OnTimeSetListener
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
+import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
@@ -86,10 +87,23 @@ class EditActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val pref =
+            applicationContext.getSharedPreferences("MyPref", 0) // 0 - for private mod
+
+        if (pref.getBoolean("switch", false)) {
+
+            val theme: Resources.Theme = super.getTheme()
+            theme.applyStyle(com.makentoshe.androidgithubcitemplate.R.style.AppTheme_Dark, true)
+
+        } else {
+
+            val theme: Resources.Theme = super.getTheme()
+            theme.applyStyle(com.makentoshe.androidgithubcitemplate.R.style.AppTheme, true)
+
+        }
         super.onCreate(savedInstanceState)
         val actionBar = supportActionBar
         actionBar?.title = "Edit"
-        actionBar?.setBackgroundDrawable(ColorDrawable(0xff6bbaff.toInt()))
         actionBar?.setDisplayHomeAsUpEnabled(true)
         setContentView(R.layout.activity_edit)
         noteImage = findViewById(R.id.imageField)

@@ -1,6 +1,7 @@
 package com.makentoshe.androidgithubcitemplate
 
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -16,12 +17,29 @@ import kotlinx.android.synthetic.main.activity_main.*
 class StatsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val pref =
+            applicationContext.getSharedPreferences("MyPref", 0) // 0 - for private mode
+
+        val editor = pref.edit()
+
+        if (pref.getBoolean("switch", false)) {
+
+            val theme: Resources.Theme = super.getTheme()
+            theme.applyStyle(com.makentoshe.androidgithubcitemplate.R.style.AppTheme_Dark, true)
+
+        } else {
+
+            val theme: Resources.Theme = super.getTheme()
+            theme.applyStyle(com.makentoshe.androidgithubcitemplate.R.style.AppTheme, true)
+
+        }
+
         super.onCreate(savedInstanceState)
         val actionBar = supportActionBar
         actionBar?.title = "Statistics"
-        actionBar?.setBackgroundDrawable(ColorDrawable(0xff6bbaff.toInt()))
         actionBar?.setDisplayHomeAsUpEnabled(true)
         setContentView(R.layout.activity_stats)
+
         var Barchart: BarChart = findViewById<BarChart>(R.id.month_rating_chart)
         var Barvalues: ArrayList<BarEntry> = ArrayList(0)
         Barvalues.add(0, BarEntry(0f, 40f))

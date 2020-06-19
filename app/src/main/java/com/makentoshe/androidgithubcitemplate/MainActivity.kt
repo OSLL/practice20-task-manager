@@ -6,6 +6,10 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.content.res.Resources
+import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
@@ -25,7 +29,8 @@ class MainActivity : AppCompatActivity(), AppCallback {
     override fun updateAdapter(
         groupAdapter: GroupAdapter<ViewHolder>,
         db: TaskDatabase,
-        deleteId: Long
+        deleteId: Long,
+        pref: SharedPreferences
     ) {
         sendNot()
         var taskDao = db.taskDao()
@@ -34,8 +39,8 @@ class MainActivity : AppCompatActivity(), AppCallback {
             .add(
                 RatingItem(
                     Rating(
-                        Rating = 34
-                    )
+                        Rating = 34,
+                    pref = pref)
                 )
             )
         if (deleteId > -1) taskDao.deleteById(deleteId)
@@ -47,7 +52,8 @@ class MainActivity : AppCompatActivity(), AppCallback {
                 this@MainActivity,
                 main_recycler_view,
                 adapter as GroupAdapter<ViewHolder>,
-                db
+                db,
+                pref
             )
         }
 
@@ -85,9 +91,25 @@ class MainActivity : AppCompatActivity(), AppCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         var db = TaskDatabase.getDatabase(application)
+        val pref =
+            applicationContext.getSharedPreferences("MyPref", 0) // 0 - for private mode
+
+        val editor = pref.edit()
+
+        if (pref.getBoolean("switch", false)) {
+
+            val theme: Resources.Theme = super.getTheme()
+            theme.applyStyle(com.makentoshe.androidgithubcitemplate.R.style.AppTheme_Dark, true)
+
+        } else {
+
+            val theme: Resources.Theme = super.getTheme()
+            theme.applyStyle(com.makentoshe.androidgithubcitemplate.R.style.AppTheme, true)
+
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        updateAdapter(groupAdapter, db)
+        updateAdapter(groupAdapter, db, -1, pref)
         val mOnNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
@@ -159,10 +181,11 @@ class MainActivity : AppCompatActivity(), AppCallback {
         appCallback: AppCallback,
         recyclerView: RecyclerView,
         mAdapter: GroupAdapter<ViewHolder> = groupAdapter,
-        db: TaskDatabase
+        db: TaskDatabase,
+        pref: SharedPreferences
     ) {
         val itemTouchHelper =
-            ItemTouchHelper(AppCallback.SwipeCallback(appCallback, groupAdapter, application, db))
+            ItemTouchHelper(AppCallback.SwipeCallback(appCallback, groupAdapter, application, db, pref))
         itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 }

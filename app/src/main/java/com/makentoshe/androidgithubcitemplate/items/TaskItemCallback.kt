@@ -1,6 +1,7 @@
 package com.makentoshe.androidgithubcitemplate.items
 
 import android.app.Application
+import android.content.SharedPreferences
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.xwray.groupie.GroupAdapter
@@ -10,7 +11,8 @@ interface AppCallback {
     fun updateAdapter(
         groupAdapter: GroupAdapter<ViewHolder>,
         db: TaskDatabase,
-        deleteId: Long = -1
+        deleteId: Long = -1,
+        pref: SharedPreferences
     ) {
     }
 
@@ -18,7 +20,8 @@ interface AppCallback {
         private var appCallback: AppCallback,
         adapter: GroupAdapter<ViewHolder>,
         application: Application,
-        private var db: TaskDatabase
+        private var db: TaskDatabase,
+        private var pref: SharedPreferences
     ) : AppCallback,
         ItemTouchHelper.SimpleCallback(0, 0) {
         val app = application
@@ -58,7 +61,7 @@ interface AppCallback {
             var taskDao = db.taskDao()
             val positions: List<Int> = taskDao.sortedPinned().map { it.id }
             val pos = positions[viewHolder.adapterPosition - 1].toLong()
-            appCallback.updateAdapter(mAdapter, db, pos)
+            appCallback.updateAdapter(mAdapter, db, pos, pref)
         }
 
     }
