@@ -11,6 +11,7 @@ interface AppCallback {
     fun updateAdapter(
         groupAdapter: GroupAdapter<ViewHolder>,
         db: TaskDatabase,
+        rdb: RatingDatabase,
         deleteId: Long = -1,
         pref: SharedPreferences
     ) {
