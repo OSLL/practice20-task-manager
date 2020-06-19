@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:fontFamily="@font/font_poppins"
         android:id="@+id/HomeButton"
         android:enabled="true"
         android:icon="@drawable/home_icon"
         android:title="Home" />
     <item
+        android:fontFamily="@font/font_poppins"
         android:id="@+id/StatsButton"
         android:enabled="true"
         android:icon="@drawable/stats_icon"
         android:title="Stats" />
     <item
+        android:fontFamily="@font/font_poppins"
         android:id="@+id/ProfileButton"
         android:enabled="true"
-        android:icon="@drawable/profile_icon_square"
+        android:icon="@drawable/profile_icon"
         android:title="Profile" />
 </menu>

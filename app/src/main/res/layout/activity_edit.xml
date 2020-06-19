@@ -27,79 +27,310 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/editTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/buttonBackground">
+
+            <EditText
+                android:id="@+id/editTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="Title"
+                android:lines="1"
+                android:maxLength="32"
+                android:nextFocusDown="@id/textField"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="12dp"
+                android:textColor="#000000"
+                android:textColorHint="@color/textColorSecondary"
+                app:layout_constraintBottom_toTopOf="@id/textField" />
+        </androidx.cardview.widget.CardView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="vertical">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toTopOf="@id/bottom_navigation" />
+            app:layout_constraintTop_toBottomOf="@id/editTitleView">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
+            <ScrollView
+                android:id="@+id/textFieldView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+                app:layout_constraintTop_toBottomOf="@id/editTitle">
 
-                <EditText
-                    android:id="@+id/editTitle"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/buttonBackground"
-                    android:hint="Title"
-                    android:maxLength="32"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:textColor="#000000"
-                    android:textColorHint="@color/textColorSecondary"
-                    app:layout_constraintBottom_toTopOf="@id/textField" />
+                    android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/textField"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Begin your note"
-                    android:inputType="textMultiLine"
-                    android:scrollbars="vertical"
-                    android:textColor="@color/textColor"
-                    android:textColorHint="@color/textColorSecondary"
-                    app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-                    app:layout_constraintTop_toBottomOf="@id/editTitle" />
-            </LinearLayout>
-        </ScrollView>
+
+                    <EditText
+                        android:id="@+id/textField"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Begin your note..."
+                        android:inputType="textMultiLine"
+                        android:paddingHorizontal="12dp"
+                        android:paddingTop="8dp"
+
+                        android:scrollbars="vertical"
+                        android:textColor="@color/textColor"
+                        android:textColorHint="@color/textColorSecondary" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:adjustViewBounds="true"
+                        android:padding="12dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageField"/>
+
+                </LinearLayout>
+            </ScrollView>
+
+
         </LinearLayout>
+
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:backgroundTint="@color/buttonBackground"
             android:gravity="end"
+            app:backgroundTint="@color/buttonBackground"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <include
-                layout="@layout/edit_menu_lower"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/bottom_navigation"></include>
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/SetColor"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:enabled="true"
+                    android:src="@drawable/bookmark_icon"
+                    android:tint="@color/textColorSecondary"
+                    android:title="Set color" />
+
+                <ImageButton
+                    android:id="@+id/SetAlarm"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:enabled="true"
+                    android:src="@drawable/newalarm_icon"
+                    android:tint="@color/textColorSecondary"
+                    android:title="Set alarm" />
+
+                <!--<ImageButton
+                    android:id="@+id/SetList"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:enabled="true"
+                    android:onClick="listToggle"
+                    android:src="@drawable/listadd_icon"
+                    android:tint="@color/textColorSecondary"
+                    android:title="Create list" />-->
+
+                <ImageButton
+                    android:id="@+id/SetAttachment"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:enabled="true"
+                    android:src="@drawable/addattachment_icon"
+                    android:tint="@color/textColorSecondary"
+                    android:title="Add attachment" />
+
+                <ImageButton
+                    android:id="@+id/Pin"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:enabled="true"
+                    android:src="@drawable/pin_icon"
+                    android:tint="@color/textColorSecondary"
+                    android:title="Pin task" />
+            </LinearLayout>
+
+
         </com.google.android.material.bottomappbar.BottomAppBar>
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                app:fabSize="normal"
-                android:id="@+id/fab"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/DateTimeLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/buttonBackground"
+            android:visibility="invisible"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="wrap_content">
 
-                android:backgroundTint="@color/colorPrimary"
-                android:src="@drawable/plus_icon" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/SetDateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="10dp"
+                    android:paddingTop="5dp"
+                    android:text="Set date"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/SetDate"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="250sp"
+                    android:layout_height="50sp"
+                    android:layout_marginHorizontal="5dp"
+                    android:gravity="start|center_vertical"
+                    android:text="DATE"
+                    android:enabled="false"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/SetDateText"
+                    app:strokeColor="@color/textColorSecondary" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/SetTimeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="10dp"
+                    android:paddingTop="5dp"
+                    android:text="Set time"
+                    android:textSize="16sp"
+                    app:layout_constraintTop_toBottomOf="@id/SetDate" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/SetTime"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="250sp"
+                    android:layout_height="50sp"
+                    android:layout_marginHorizontal="5dp"
+                    android:gravity="start|center_vertical"
+                    android:text="TIME"
+                    android:enabled="false"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/SetTimeText"
+                    app:strokeColor="@color/textColorSecondary" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/SetTimeDone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50sp"
+                    android:layout_marginHorizontal="5dp"
+                    android:gravity="center"
+                    android:text="DONE"
+                    android:enabled="false"
+                    android:textColor="@color/windowBackground"
+                    android:textSize="16sp"
+                    app:cornerRadius="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/SetTime"
+                    app:strokeColor="@color/colorPrimary" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/SetTimeCancel"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50sp"
+                    android:elevation="0dp"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:text="CLEAR"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@id/SetTimeDone"
+                    app:layout_constraintTop_toBottomOf="@id/SetTime" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/_3_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:elevation="6dp"
+            android:src="@drawable/archive_icon"
+            android:visibility="invisible"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toTopOf="@id/_2_"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:pressedTranslationZ="12dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/_2_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:elevation="6dp"
+            android:src="@drawable/cross_icon"
+            android:visibility="invisible"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toTopOf="@id/_1_"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:pressedTranslationZ="12dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/_1_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:elevation="6dp"
+            android:src="@drawable/check_icon"
+            android:visibility="invisible"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toTopOf="@id/add_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:pressedTranslationZ="12dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:elevation="6dp"
+            android:src="@drawable/exit_icon"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:pressedTranslationZ="12dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

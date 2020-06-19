@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorActionBar">#ff6bbaff</color>
     <color name="colorPrimary">#2196F3</color>
-    <color name="colorPrimaryDark">#457D8C</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#91E4FB</color>
     <color name="windowBackground">#FEFEFE</color>
     <color name="textColorPrimary">#000000</color>
@@ -12,6 +13,22 @@
     <color name="colorOnSurface">#000000</color>
     <color name="InactiveBottomNavIconColor">#91E4FB</color>
     <color name="BottomNavBarColor">#EEEEEE</color>
+
+    <!-- Dark Theme -->
+
+    <color name="colorActionBar_Dark">#242424</color>
+    <color name="colorPrimary_Dark">#FFFFFF</color>
+    <color name="colorPrimaryDark_Dark">#000000</color>
+    <color name="colorAccent_Dark">#91E4FB</color>
+    <color name="windowBackground_Dark">#9A0A0A0A</color>
+    <color name="textColorPrimary_Dark">#FFFFFF</color>
+
+    <color name="buttonBackground_Dark">#767676</color>
+    <color name="textColor_Dark">#E1E3E7</color>
+    <color name="textColorSecondary_Dark">#AEAEAE</color>
+    <color name="colorOnSurface_Dark">#FFFFFF</color>
+    <color name="BottomNavBarColor_Dark">#2D2D2D</color>
+
     <!--<color name="colorIcons">#6bbaff<!-#9ed2ff#91E4FB--><!--></color>
     <color name="colorSelected">#9ed2ff</color>
     <color name="actionbar_background">#6BBAFF</color>
