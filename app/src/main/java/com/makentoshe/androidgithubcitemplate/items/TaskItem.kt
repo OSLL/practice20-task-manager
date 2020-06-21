@@ -41,11 +41,11 @@ class TaskItem(private val task: Task, private val context: Context) : Item() {
                 var text = ""
                 calendar.timeInMillis = task.date
                 if ((calendar[Calendar.DAY_OF_MONTH] == calendarCurrent[Calendar.DAY_OF_MONTH]) and (calendar[Calendar.MONTH] == calendarCurrent[Calendar.MONTH]) and (calendar[Calendar.YEAR] == calendarCurrent[Calendar.YEAR])) {
-                    text = text + calendar[Calendar.HOUR] + ":" + calendar[Calendar.MINUTE]
                 } else {
                     text =
                         text + calendar[Calendar.DAY_OF_MONTH].toString() + "." + (calendar[Calendar.MONTH] + 1).toString() + " " + calendar[Calendar.HOUR].toString() + ":" + calendar[Calendar.MINUTE].toString()
                 }
+                text = text + " " + if (calendar[Calendar.HOUR_OF_DAY]<10) {"0" + calendar[Calendar.HOUR_OF_DAY]} else {calendar[Calendar.HOUR_OF_DAY]} + ":"  + if (calendar[Calendar.MINUTE]<10) {"0" + calendar[Calendar.MINUTE]} else {calendar[Calendar.MINUTE]}
                 note_date.text = text
                 if (calendar.timeInMillis - calendarCurrent.timeInMillis <= 30 * 60 * 1000) {
                     ImageViewCompat.setImageTintList(
@@ -59,7 +59,19 @@ class TaskItem(private val task: Task, private val context: Context) : Item() {
                     note_title.setTextColor(0xFFFF0000.toInt())
                     note_date.setTextColor(0xFFFF0000.toInt())
                 }
-
+                if (calendar.timeInMillis < calendarCurrent.timeInMillis) {
+                    ImageViewCompat.setImageTintList(
+                        alarm_icon,
+                        ColorStateList.valueOf(0xFF666666.toInt())
+                    )
+                    ImageViewCompat.setImageTintList(
+                        pin_icon,
+                        ColorStateList.valueOf(0xFF666666.toInt())
+                    )
+                    note_title.setTextColor(0xFF666666.toInt())
+                    note_date.setTextColor(0xFF666666.toInt())
+                    note_text.setTextColor(0xFF666666.toInt())
+                }
             }
             if (task.pin) pin_icon.visibility = View.VISIBLE
             if (task.image != "") {
